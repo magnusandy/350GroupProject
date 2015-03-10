@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>PinBoard Login</title>
+
+	<link rel="stylesheet" href="css/login-style.css">
+
+    <script src="js/prefixfree.min.js"></script>
+
+</head>
+
+<body>
+	<div id="fb-root"></div>
+	<script src="http://connect.facebook.net/en_US/all.js"></script>
+	<script>
+	  FB.init({ appId: '385230424989175', status: true, cookie: true, xfbml : true });
+
+	  function doLogin() {  
+		FB.login(function(response) {
+		  if (response.session) {
+			FB.api('/me',  function(response) {
+				alert('Welcome ' + response.name);
+				alert('Full details: ' + JSON.stringify(response));
+			  }
+			);
+		  }
+		} , {perms:''}); 
+	}
+	</script>
+  <div class="body"></div>
+		<div class="grad"></div>
+		<div class="header">
+			<div>Pin<span>Board</span></div>
+		</div>
+		<br>
+		<div class="login">
+				<input type="text" placeholder="username" name="user"><br>
+				<input type="password" placeholder="password" name="password"><br>
+				<input type="button" value="Login">
+				<input type="button" value="Facebook Sign in" onclick="doLogin();return false;">
+		</div>
+
+  <script src='http://codepen.io/assets/libs/fullpage/jquery.js'></script>
+
+</body>
+
+</html>
