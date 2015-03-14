@@ -17,19 +17,46 @@
 	<div id="fb-root"></div>
 	<script src="http://connect.facebook.net/en_US/all.js"></script>
 	<script>
-	  FB.init({ appId: '385230424989175', status: true, cookie: true, xfbml : true });
-
-	  function doLogin() {  
+	//initialize the facebook app for the login
+	FB.init({ appId: '385230424989175', status: true, cookie: true, xfbml : true });
+	
+	/*
+	Logs the user into the Facebook app then it calls off to an AJAX function that saves the users email into 
+	*/
+	function doLogin() { 
 		FB.login(function(response) {
-		  if (response.session) {
-			FB.api('/me',  function(response) {
-				alert('Welcome ' + response.name);
-				alert('Full details: ' + JSON.stringify(response));
-			  }
-			);
-		  }
-		} , {perms:''}); 
+		    if (response.authResponse) {
+			   console.log('Welcome!  Fetching your information.... ');
+			FB.api('/me', function(response) {
+			   console.log('Good to see you, ' + response.email + '.'); //press f12 to see the users email
+			   createUserSession(response.email);
+		    });
+			} else {
+				console.log('User cancelled login or did not fully authorize.');
+			}
+		} , {scope:'email'}); 
 	}
+	
+	function createUserSession(email) {
+    
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                 if(email == xmlhttp.responseText)
+				 {
+					console.log("session created");
+					window.location.href = 'display.php';
+				 }
+				 else
+				 {
+					console.log("session NOT created successfully");
+				 }
+            }
+        }
+        xmlhttp.open("GET", "createSesh.php?q=" + email, true);
+        xmlhttp.send();
+    
+}
 	</script>
   <div class="body"></div>
 		<div class="grad"></div>
@@ -41,7 +68,7 @@
 				<input type="text" placeholder="username" name="user"><br>
 				<input type="password" placeholder="password" name="password"><br>
 				<input type="button" value="Login">
-				<input type="button" value="Facebook Sign in" onclick="doLogin();return false;">
+				<input type="button" value="Facebook Sign in" onclick="doLogin();return true;">
 		</div>
 
   <script src='http://codepen.io/assets/libs/fullpage/jquery.js'></script>
