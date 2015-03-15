@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>PinBoard Create Pin</title>
+</head>
+<script>
+//Pass data to the server so it can add it to the database, marker ID and email will be created/grabbed server-side
+//YOU HAVE TO DO DATA SANITIZATION AND CHECKING BEFORE CALLING THIS FUNCTION
+function createPin(title, address, lat, lng, description, isVisited) {    
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				alert(xmlhttp.responseText);
+            }
+        }
+		var postParams = "title="+title+"&address="+address+"&lat="+lat+"&lng="+lng+"&description="+description+"&isVisited="+isVisited;
+        xmlhttp.open("POST", "createPin.php", true);
+		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        xmlhttp.send(postParams);
+	}
+createPin("Andrew", "address", 54, 23, "description", true);
+</script>
+<body>
+</body>
+
+</html>
