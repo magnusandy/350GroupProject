@@ -3,5 +3,5 @@
 $email = $_REQUEST["q"];
 session_start();
 $_SESSION["email"] = $email;
-echo $email;
+echo $_SESSION["email"];
 ?>
