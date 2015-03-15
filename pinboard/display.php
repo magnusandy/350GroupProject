@@ -13,12 +13,20 @@ function getPinsForUser() {
         xmlhttp.onreadystatechange = function() {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 				var listOfMarkers = JSON.parse(xmlhttp.responseText);
+				var markerOne = listOfMarkers[0];
+				console.log(markerOne.id) //the int id from the DATABASE
+				console.log(markerOne.title) //title of marker
+				console.log(markerOne.address) //address possibly empty
+				console.log(markerOne.lat) //latitude double
+				console.log(markerOne.lng) //longitude double
+				console.log(markerOne.description) //description string
+				console.log(markerOne.isVisited) // boolean 
 				/*
 				THIS IS WHERE THE STUFF IS HAPPENING BABY
 				the above variable, listOfMarkers is a JSON object that is essentally an
 				array of marker information Objects the information can be accessed thusly:
 				listOfMarkers[i] is the ith marker information object and has the following fields:
-				markerOne = listOfMarkers[i];
+				markerOne = listOfMarkers[0];
 				markerOne.id //the int id from the DATABASE
 				markerOne.title //title of marker
 				markerOne.address //address possibly empty
