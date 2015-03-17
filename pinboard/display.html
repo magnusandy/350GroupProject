@@ -30,6 +30,19 @@
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/scripts.js"></script>
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+		var $window = $(window);
+		var marker = $('#persist-header');
+		$window.scroll(function(){
+			if ($window.scrollTop() >= 100) {
+			   marker.addClass('floatingHeader');
+			}
+			else {
+			   marker.removeClass('floatingHeader');
+			}
+		});
+	
 </head>
 
 <body>
@@ -78,83 +91,72 @@
 				</div>
 				
 			</nav>
+			<br/>
 			<div class="page-header">
 				<h1>
-					Pinboard <small>Maps for the traveling soul</small>
+					Pinboard <small>Maps for the travelling soul!</small>
 				</h1>
 			</div>
 		</div>
 	</div>
+	<span class="label label-default">Markers</span>
 	<div class="row clearfix">
 		<div class="col-md-2 column">
-			<p><strong>Markers</strong></p>
-			<div class="panel-group" id="panel-66082">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						 <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-66082" href="#panel-element-153190">Marker #1</a>
-					</div>
-					<div id="panel-element-153190" class="panel-collapse collapse">
-						<div class="panel-body">
-							Marker One Goes here
+			<div class="inner_marker">
+
+				<div class="panel-group" id="panel-66082">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							 <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-66082" href="#panel-element-153190">Marker #1</a>
+						</div>
+						<div id="panel-element-153190" class="panel-collapse collapse">
+							<div class="panel-body">
+								Marker One Goes here
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						 <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-66082" href="#panel-element-587655">Marker #2</a>
-					</div>
-					<div id="panel-element-587655" class="panel-collapse collapse">
-						<div class="panel-body">
-							Market Two Here
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							 <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-66082" href="#panel-element-587655">Marker #2</a>
+						</div>
+						<div id="panel-element-587655" class="panel-collapse collapse">
+							<div class="panel-body">
+								Marker Two Here
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						 <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-66082" href="#panel-element-987654">Marker #3</a>
-					</div>
-					<div id="panel-element-987654" class="panel-collapse collapse">
-						<div class="panel-body">
-							Market Three Here
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							 <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-66082" href="#panel-element-987654">Marker #3</a>
+						</div>
+						<div id="panel-element-987654" class="panel-collapse collapse">
+							<div class="panel-body">
+								Marker Three Here
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						 <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-66082" href="#panel-element-225558">Marker #4</a>
-					</div>
-					<div id="panel-element-225558" class="panel-collapse collapse">
-						<div class="panel-body">
-							Market Four Here
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							 <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-66082" href="#panel-element-225558">Marker #4</a>
+						</div>
+						<div id="panel-element-225558" class="panel-collapse collapse">
+							<div class="panel-body">
+								Marker Four Here
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						 <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-66082" href="#panel-element-885522">Marker #5</a>
-					</div>
-					<div id="panel-element-885522" class="panel-collapse collapse">
-						<div class="panel-body">
-							Market Five Here
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							 <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-66082" href="#panel-element-885522">Marker #5</a>
+						</div>
+						<div id="panel-element-885522" class="panel-collapse collapse">
+							<div class="panel-body">
+								Marker Five Here
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<ul class="pagination pagination-sm">
-				<li>
-					<a href="#">Prev</a>
-				</li>
-				<li>
-					<a href="#">1</a>
-				</li>
-				<li>
-					<a href="#">2</a>
-				</li>
-
-				<li>
-					<a href="#">Next</a>
-				</li>
-			</ul>
 		</div>
 		<div class="col-md-10 column">
 			 <span class="label label-default">Map</span> <h1><strong>MAP GOES HERE</strong></h1><button type="button" class="btn btn-primary">Submit</button>
