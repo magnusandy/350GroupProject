@@ -5,6 +5,6 @@ h3.floatingHeader {
 }
 
 .inner_marker {
-	height: 200px;
+	height: 300px;
 	overflow-y: auto;
 }
