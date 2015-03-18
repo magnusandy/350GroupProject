@@ -1,6 +1,6 @@
 <?php
 session_start();
-echo $_SESSION["email"];
+//echo $_SESSION["email"];
 ?>
 <script>
 //a email is NOT passed as a param, rather the PHP function will use

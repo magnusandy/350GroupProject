@@ -65,9 +65,9 @@
 		</div>
 		<br>
 		<div class="login">
-				<input type="text" placeholder="username" name="user"><br>
+				<input id="123" type="text" placeholder="username" name="user"><br>
 				<input type="password" placeholder="password" name="password"><br>
-				<input type="button" value="Login" onclick="createUserSession('magnusandy@gmail.com')"> <!-- THIS IS SUPER BAD AND SHOULD NOT STAY-->
+				<input type="button" value="Login" onclick="createUserSession(document.getElementById('123').value)"> <!-- THIS IS SUPER BAD AND SHOULD NOT STAY-->
 				<input type="button" value="Facebook Sign in" onclick="doLogin();return true;">
 		</div>
 

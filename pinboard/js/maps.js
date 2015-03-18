@@ -66,9 +66,21 @@ function initialize()
 		});
 		map.setCenter(initialLocation);
 	
-  }
+	}
+	
+	google.maps.event.addListener(map, 'rightclick', function(event){
+		var name = window.prompt(window.prompt("Enter name","name"),window.prompt("enter title","title"));
+		placeMarker(event.latLng,name);
+	});
 }
 
+function placeMarker(location,name) {
+	var otherMarker = new google.maps.Marker({
+		position: location,
+		map: map,
+		title: name
+	});
+	map.setCenter(location);
+}
 
 google.maps.event.addDomListener(window, 'load', initialize);
-google.maps.event.trigger(map, 'resize');

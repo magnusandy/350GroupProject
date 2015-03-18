@@ -8,3 +8,19 @@ h3.floatingHeader {
 	height: 300px;
 	overflow-y: auto;
 }
+
+html, 
+body,
+.container{ 
+	height: 100%; 
+}
+
+
+.col-md-10, 
+#rowmap{
+	height: 75%
+}
+
+#map-canvas {
+	height: 100%
+}
