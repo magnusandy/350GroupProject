@@ -1,10 +1,10 @@
 <?php
 // get the q parameter from URL
 session_start();
-$servername = "lovett.usask.ca";
-$username = "cmpt350_amm215";
-$dbname = "cmpt350_amm215";
-$password = "5eukmjjz9w";
+$servername = "104.236.254.188";
+$username = "root";
+$dbname = "pinboard";
+$password = "qwertyhero";
 $email = $_SESSION["email"];
 //create connection to the database
 $conn = new mysqli($servername, $username, $password, $dbname);
