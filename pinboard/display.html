@@ -152,6 +152,16 @@
 			 <span class="label label-default">Map</span> 
 				<div id="map-canvas"></div>
 		</div>
+		<!-- This is the code for the New Pin Form -->
+		<div id="newPinForm" class="hidden">
+			<form action="#" id="form" method="post" name="form">
+			<h3>New Pin Form</h3>
+			<input id="name" name="pinName" placeholder="Pin Name" type="text"><br>
+			<input id="address" name="pinAddress" placeholder="Pin Address" type="text"><br>
+			<textarea id="description" name="pinDescription" placeholder="Enter A Description For Your New Pin!"></textarea><br>
+			<button id="submit" onclick ="return hideForm();">Send</a>
+			</form>
+		</div>
 	</div>
 </div>
 </body>

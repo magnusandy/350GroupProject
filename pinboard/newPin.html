@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Enter information for your new pin below:</p>
+
+<form id="markerForm" action="form_action.asp" onsubmit="returnInformation()">
+  Pin Name: <input type="text" name="pinName"><br>
+  Pin Address: <input type="text" name="pinAddress"><br>
+  Pin Description: <textarea name="pinDescription" rows="5" cols="30"></textarea><br><br>
+  <input type="button" onclick="submitMarker()" value="Create Pin">
+</form>
+
+<script>
+function submitMarker() {
+    document.getElementById("markerForm").submit();
+	self.close();
+}
+
+function returnInformation(){
+	var pinName = document.forms["markerForm"]["pinName"];
+	var pinAddress = document.forms["markerForm"]["pinAddress"];
+	var pinDescript = document.forms["markerForm"]["pinDescription"];
+}
+</script>
+
+</body>
+</html>

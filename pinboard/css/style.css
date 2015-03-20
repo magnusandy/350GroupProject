@@ -24,3 +24,7 @@ body,
 #map-canvas {
 	height: 100%
 }
+
+h1.hidden {
+    display: none;
+}
