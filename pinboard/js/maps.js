@@ -11,6 +11,7 @@ var name;
 var address;
 var description;
 var clickEvent;
+var currentOnClick;
 function initialize()
 	{
 		geocoder = new google.maps.Geocoder();
@@ -75,6 +76,7 @@ function initialize()
 	google.maps.event.addListener(map, 'rightclick', function(event){
 		showPinForm();
 		clickEvent = event;
+		currentOnClick = event.latLng;
 	});
 }
 	
@@ -87,22 +89,22 @@ function showPinForm(){
 }
 	
 function submitPin(){
-	name = document.getElementById("pinName");
-	address = document.getElementById("pinAddress");
-	description = document.getElementById("pinDescription");
-	placeMarker(name,address,description);
+	name = document.getElementById("pinName").value;
+	address = document.getElementById("pinAddress").value;
+	description = document.getElementById("pinDescription").value;
+	placeMarker(name);
 }
 
 
-function placeMarker(name,address,description) {
+function placeMarker(name){
 	var otherMarker = new google.maps.Marker({
-		position: clickEvent.location,
+		position: clickEvent.latLng,
 		map: map,
-		title: name,
-		description: description,
-		address: address
+		title: name
+		//description: description,
+		//address: currentOnClick
 	});
-	map.setCenter(clickEvent);
+	
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
