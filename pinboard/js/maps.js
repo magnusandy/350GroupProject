@@ -76,7 +76,7 @@ function initialize()
 	
 	google.maps.event.addListener(map, 'rightclick', function(event){
 		showPinForm();
-		clickEvent = event;
+		//clickEvent = event;
 		currentOnClick = event.latLng;
 	});
 }
@@ -95,7 +95,7 @@ function submitPin(){
 	description = document.getElementById("pinDescription").value;
 	isVisited = document.getElementById("pinIsVisited").value;
 	if(name != ""){
-		createPin(name,address,currentOnClick.lat,currentOnClick.lng,description,isVisited);
+		createPin(name,address,currentOnClick.lat(),currentOnClick.lng(),description,isVisited);
 	} else {
 		var pinError = document.getElementById("pinNameError");
 		pinError.className = "";
