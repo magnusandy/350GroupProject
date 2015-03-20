@@ -74,7 +74,7 @@ function initialize()
 	
 	google.maps.event.addListener(map, 'rightclick', function(event){
 		showPinForm();
-		clikcEvent = event;
+		clickEvent = event;
 	});
 	
 	function showPinForm(){
@@ -97,9 +97,9 @@ function placeMarker(name,address,description) {
 	var otherMarker = new google.maps.Marker({
 		position: clickEvent.location,
 		map: map,
-		title: name,
-		address: address,
-		description: description
+		title: ns,
+		description: deame,
+		address: addresscription
 	});
 	map.setCenter(clickEvent);
 }
