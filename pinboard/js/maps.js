@@ -76,30 +76,31 @@ function initialize()
 		showPinForm();
 		clickEvent = event;
 	});
+}
 	
-	function showPinForm(){
-		var pinForm = document.getElementById("newPinForm");
-		var currentClass = pinForm.className;
-		if(currentClass == "hidden"){
-			pinForm.className = "";
-		}
-	}
-	
-	function submitPin(){
-		name = pinForm.getElementById("pinName");
-		address = pinForm.getElementById("pinAddress");
-		description = pinForm.getElementById("pinDescription");
-		placeMarker(name,address,description);
+function showPinForm(){
+	var pinForm = document.getElementById("newPinForm");
+	var currentClass = pinForm.className;
+	if(currentClass == "hidden"){
+		pinForm.className = "";
 	}
 }
+	
+function submitPin(){
+	name = pinForm.getElementById("pinName");
+	address = pinForm.getElementById("pinAddress");
+	description = pinForm.getElementById("pinDescription");
+	placeMarker(name,address,description);
+}
+
 
 function placeMarker(name,address,description) {
 	var otherMarker = new google.maps.Marker({
 		position: clickEvent.location,
 		map: map,
-		title: ns,
-		description: deame,
-		address: addresscription
+		title: name,
+		description: description,
+		address: address
 	});
 	map.setCenter(clickEvent);
 }
