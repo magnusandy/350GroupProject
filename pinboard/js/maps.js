@@ -92,10 +92,11 @@ function submitPin(){
 	name = document.getElementById("pinName").value;
 	address = document.getElementById("pinAddress").value;
 	description = document.getElementById("pinDescription").value;
-	placeMarker(name);
+	//placeMarker(name);
+	/* ENTER CODE HERE TO SEND TO PHP FOR SENDING TO DATABASE */
 }
 
-
+/*
 function placeMarker(name){
 	var otherMarker = new google.maps.Marker({
 		position: clickEvent.latLng,
@@ -104,7 +105,7 @@ function placeMarker(name){
 		//description: description,
 		//address: currentOnClick
 	});
-	
 }
+*/
 
 google.maps.event.addDomListener(window, 'load', initialize);
