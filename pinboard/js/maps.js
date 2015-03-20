@@ -115,4 +115,20 @@ function createPin(title, address, lat, lng, description, isVisited) {
     xmlhttp.send(postParams);
 }
 
+/* Takes in 4 variables and makes a marker using them
+	pinLat : latitude of the pin
+	pinLng : longitude of the pin
+	pinName : the title for the pin
+	description : the description for the pin
+*/
+function placeMarker(pinLat,pinLng,pinName,description){
+	var marker = new google.maps.Marker({
+		//Takes the individual Lat and Lng and parses them into a location for position
+		position: {lat: pinLat, lng: pinLng},
+		map: map,
+		title: pinName,
+		description: description
+	});
+}
+
 google.maps.event.addDomListener(window, 'load', initialize);
