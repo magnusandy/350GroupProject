@@ -87,9 +87,9 @@ function showPinForm(){
 }
 	
 function submitPin(){
-	name = pinForm.getElementById("pinName");
-	address = pinForm.getElementById("pinAddress");
-	description = pinForm.getElementById("pinDescription");
+	name = document.getElementById("pinName");
+	address = document.getElementById("pinAddress");
+	description = document.getElementById("pinDescription");
 	placeMarker(name,address,description);
 }
 
