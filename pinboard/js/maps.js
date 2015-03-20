@@ -10,6 +10,7 @@ var curMarker = new google.maps.Marker;
 var name;
 var address;
 var description;
+var isVisited;
 var clickEvent;
 var currentOnClick;
 function initialize()
@@ -92,20 +93,26 @@ function submitPin(){
 	name = document.getElementById("pinName").value;
 	address = document.getElementById("pinAddress").value;
 	description = document.getElementById("pinDescription").value;
-	//placeMarker(name);
-	/* ENTER CODE HERE TO SEND TO PHP FOR SENDING TO DATABASE */
+	isVisited = document.getElementById("pinIsVisited").value;
+	if(name != ""){
+		createPin(name,address,currentOnClick.lat,currentOnClick.lng,description,isVisited);
+	} else {
+		var pinError = document.getElementById("pinNameError");
+		pinError.className = "";
+	}
 }
 
-/*
-function placeMarker(name){
-	var otherMarker = new google.maps.Marker({
-		position: clickEvent.latLng,
-		map: map,
-		title: name
-		//description: description,
-		//address: currentOnClick
-	});
+function createPin(title, address, lat, lng, description, isVisited) {    
+	var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			/* Reload page here */
+        }
+    }
+	var postParams = "title="+title+"&address="+address+"&lat="+lat+"&lng="+lng+"&description="+description+"&isVisited="+isVisited;
+    xmlhttp.open("POST", "createPin.php", true);
+	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    xmlhttp.send(postParams);
 }
-*/
 
 google.maps.event.addDomListener(window, 'load', initialize);

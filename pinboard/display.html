@@ -151,9 +151,11 @@
 			<div id="newPinForm" class="hidden">
 				<form action="#" id="form" method="post" name="form" onsubmit="return false">
 				<h3>New Pin Form</h3>
+				<p id="pinNameError" name="pinNameError" style="color: red;" type="text" class="hidden">*A name is required.</p>
 				<input id="pinName" name="pinName" placeholder="Pin Name" type="text" class="form-control"><br>
 				<input id="pinAddress" name="pinAddress" placeholder="Pin Address" type="text" class="form-control"><br>
 				<textarea id="pinDescription" name="pinDescription" placeholder="Enter A Description For Your New Pin!" style="resize:none;" class="form-control"></textarea><br>
+				<input type="checkbox" id="pinIsVisited" name="visitedCheck" value="true"> Visited?<br><br/>
 				</form>
 				<button type="submit" class="btn btn-primary btn-med" id="submit" onclick ="submitPin();">Send</a>
 			</div>
