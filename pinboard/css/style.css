@@ -16,13 +16,19 @@ body,
 }
 
 
-.col-md-10, 
+.col-md-9, 
 #rowmap{
 	height: 75%
 }
 
-#map-canvas {
-	height: 100%
+#map-canvas, .circle-text {
+	height: 150%;
+	width: 100%;
+	margin: 0 auto;
+	-moz-border-radius: 60%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    background: #4679BD;
 }
 
 h1.hidden {
