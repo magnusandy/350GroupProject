@@ -22,7 +22,7 @@ body,
 }
 
 #map-canvas, .circle-text {
-	height: 150%;
+	height: 140%;
 	width: 100%;
 	margin: 0 auto;
 	-moz-border-radius: 60%;

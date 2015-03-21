@@ -12,7 +12,7 @@ $address = $_POST["address"];
 $lat = (double)$_POST["lat"];
 $lng = (double)$_POST["lng"];
 $desc = $_POST["description"];
-$isVisited = (bool)$_POST["isVisited"];
+$isVisited = $_POST["isVisited"];
 
 //create connection to the database
 $conn = new mysqli($servername, $username, $password, $dbname);

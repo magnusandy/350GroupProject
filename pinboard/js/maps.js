@@ -13,66 +13,27 @@ var description;
 var isVisited;
 var clickEvent;
 var currentOnClick;
+var allMarkers;
 function initialize()
 	{
 		geocoder = new google.maps.Geocoder();
 		directionDisplay = new google.maps.DirectionsRenderer();
 		var myOptions = {
-			zoom: 6,
+			zoom: 2,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
 		map = new google.maps.Map(document.getElementById('map-canvas'), myOptions);
 		directionDisplay.setMap(map);
-  
+		
+		//Loop through all the markers from the database and add them to the map
+		for(var i = 0; i < allMarkers.length; i++)
+		{
+			 placeMarker(allMarkers[i]["lat"],allMarkers[i]["lng"],allMarkers[i]["title"],allMarkers[i]["isVisited"])
+		}
+		map.setCenter(new google.maps.LatLng(25,10));
   
 		// Try W3C Geolocation (Preferred)
-		if(navigator.geolocation) 
-		{
-			supportFlag = true;
-			navigator.geolocation.getCurrentPosition(function(position) 
-			{
-				initialLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
-				marker = new google.maps.Marker
-				({
-						position: initialLocation,
-						map: map,
-						title: 'You Started Here!'
 		
-				});
-				map.setCenter(initialLocation);
-			}, function() 
-			{
-				handleNoGeolocation(supportFlag);
-			});
-			
-		}
-	// Browser doesn't support Geolocation
-	else
-	{
-		supportFlag = false;
-		handleNoGeolocation(supportFlag);
-	}
-
-	function handleNoGeolocation(errorFlag) 
-	{
-		if (errorFlag == true) 
-		{
-			alert("Geolocation service failed.");
-			initialLocation = newyork;
-		} else 
-		{
-			alert("Your browser doesn't support geolocation. We've placed you in Siberia.");
-			initialLocation = siberia;
-		}
-		marker = new google.maps.Marker(
-		{
-			position: initialLocation,
-			map: map,
-			title: 'You Started Here!'
-		});
-		map.setCenter(initialLocation);
-	
-	}
 	
 	google.maps.event.addListener(map, 'rightclick', function(event){
 		showPinForm();
@@ -93,7 +54,15 @@ function submitPin(){
 	name = document.getElementById("pinName").value;
 	address = document.getElementById("pinAddress").value;
 	description = document.getElementById("pinDescription").value;
-	isVisited = document.getElementById("pinIsVisited").value;
+	isVisited = document.getElementById("pinIsVisited");
+	if(isVisited.checked)
+	{
+		isVisited = true;
+	}
+	else
+	{
+		isVisited = false;
+	}
 	if(name != ""){
 		createPin(name,address,currentOnClick.lat(),currentOnClick.lng(),description,isVisited);
 	} else {
@@ -106,7 +75,7 @@ function createPin(title, address, lat, lng, description, isVisited) {
 	var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-			/* Reload page here */
+			window.location = "display.php";
         }
     }
 	var postParams = "title="+title+"&address="+address+"&lat="+lat+"&lng="+lng+"&description="+description+"&isVisited="+isVisited;
@@ -121,13 +90,23 @@ function createPin(title, address, lat, lng, description, isVisited) {
 	pinName : the title for the pin
 	description : the description for the pin
 */
-function placeMarker(pinLat,pinLng,pinName,description){
+function placeMarker(pinLat,pinLng,pinName,isVisited){
+	var latLng = new google.maps.LatLng(pinLat, pinLng);
+	var img;
+	if(isVisited == true)
+	{
+		img = "img/visited.png";
+	}
+	else
+	{
+		img = "img/unvisited.png";	
+	}
 	var marker = new google.maps.Marker({
 		//Takes the individual Lat and Lng and parses them into a location for position
-		position: {lat: pinLat, lng: pinLng},
+		position:  latLng,
 		map: map,
 		title: pinName,
-		description: description
+		icon: img
 	});
 }
 
