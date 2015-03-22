@@ -79,7 +79,7 @@ function createPin(title, address, lat, lng, description, isVisited) {
         }
     }
 	var postParams = "title="+title+"&address="+address+"&lat="+lat+"&lng="+lng+"&description="+description+"&isVisited="+isVisited;
-    xmlhttp.open("POST", "createPin.php", true);
+    xmlhttp.open("POST", "ajaxFunctions/createPin.php", true);
 	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
     xmlhttp.send(postParams);
 }

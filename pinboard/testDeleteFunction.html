@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>PinBoard Delete Pin</title>
+</head>
+<script>
+//Pass data to the server so it can add it to the database, marker ID and email will be created/grabbed server-side
+//YOU HAVE TO DO DATA SANITIZATION AND CHECKING BEFORE CALLING THIS FUNCTION
+function deletePin(id) {    
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				alert(xmlhttp.responseText);
+            }
+        }
+		var postParams = "id="+id;
+        xmlhttp.open("POST", "ajaxFunctions/deletePin.php", true);
+		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        xmlhttp.send(postParams);
+	}
+deletePin(27);
+</script>
+<body>
+</body>
+
+</html>
