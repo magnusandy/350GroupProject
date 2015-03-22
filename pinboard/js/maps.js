@@ -96,7 +96,7 @@ function deletePin(id) {
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange = function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-			alert(xmlhttp.responseText);
+			//DO WHATEVER YOU WANT TO DO AFTER DELETION IS COMPLETE
 		}
 	}
 	var postParams = "id="+id;
@@ -104,6 +104,26 @@ function deletePin(id) {
 	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 	xmlhttp.send(postParams);
 }
+
+/*
+When using this function, you need to be careful what you pass in, because 
+the database does not care what you pass, whatever is in (or not in) the title 
+and description variables will be put into the database, so if the user does not want to
+change the Title/Description, make sure the old ones are passed in. Also, the isVisited param 
+MUST BE a boolean not an empty string or something else it wont work.
+*/
+function updatePin(id, title, description, isVisited) {    
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				//DO WHATEVER YOU WANT TO DO WHEN UPDATE IS COMPLETE
+            }
+        }
+		var postParams = "id="+id+"&title="+title+"&description="+description+"&isVisited="+isVisited;
+        xmlhttp.open("POST", "ajaxFunctions/updatePin.php", true);
+		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        xmlhttp.send(postParams);
+	}
 
 /* Takes in 4 variables and makes a marker using them
 	pinLat : latitude of the pin
