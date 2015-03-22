@@ -146,7 +146,7 @@
 						echo <<<END
 						<div class="panel panel-default">
 						<div class="panel-heading">
-							 <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-66082" onclick='map.setCenter( new google.maps.LatLng($row[lat], $row[lng])); map.setZoom(10);' href="#panel-element-$row[id]">$row[title]</a>
+							 <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-66082" onclick='map.setCenter( new google.maps.LatLng($row[lat], $row[lng])); map.setZoom(7);' href="#panel-element-$row[id]">$row[title]</a>
 						</div>
 						<div id="panel-element-$row[id]" class="panel-collapse collapse">
 							<div class="panel-body">
@@ -174,9 +174,9 @@ END;
 				<h3>New Pin Form</h3>
 				<p id="pinNameError" name="pinNameError" style="color: red;" type="text" class="hidden">*A name is required.</p>
 				<input id="pinName" name="pinName" placeholder="Pin Name" type="text" class="form-control"><br>
-				<input id="pinAddress" name="pinAddress" placeholder="Pin Address" type="text" class="form-control"><br>
+				<input id="pinAddress" name="pinAddress" placeholder="Pin Address (Optional)" type="text" class="form-control"><br>
 				<textarea id="pinDescription" name="pinDescription" placeholder="Enter A Description For Your New Pin!" style="resize:none;" class="form-control"></textarea><br>
-				<input type="checkbox" id="pinIsVisited" name="visitedCheck" value="true">Have you been here before?<br><br/>
+				<input type="checkbox" id="pinIsVisited" name="visitedCheck" value="true"> Have you been here before?<br><br/>
 				</form>
 				<button type="submit" class="btn btn-primary btn-med" id="submit" onclick ="submitPin();">Send</a>
 			</div>

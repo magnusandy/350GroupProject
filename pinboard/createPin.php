@@ -15,18 +15,16 @@ $desc = $_POST["description"];
 $isVisited = $_POST["isVisited"];
 
 //create connection to the database
-$conn = new mysqli($servername, $username, $password, $dbname);
-if($conn->connect_error)
-{
-	die("connection failed" . $conn->connect_error);
-}
-else
-{
+
+$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+//$conn = new mysqli($servername, $username, $password, $dbname);
+
 	//select all the pin information for this user
 	$sql = "INSERT INTO pin_table (email, title, address, lat, lng, description, isVisited) VALUES ('".$email."', '".$title."', '".$address."', ".$lat.", ".$lng.", '".$desc."', ".$isVisited.");";
-	$conn->query($sql);
+	$result = $conn->query($sql);
 	echo $sql;
-}
+
 
 
 
