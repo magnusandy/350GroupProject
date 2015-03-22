@@ -71,6 +71,11 @@ function submitPin(){
 	}
 }
 
+/*
+Creates and AJAX request to insert a new pin into the database, takes 
+title, address, lat, lng, description and isVisited as parameters, the email 
+for a Pin is retrieved from the session and the id is generated in the Database.
+*/
 function createPin(title, address, lat, lng, description, isVisited) {    
 	var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
@@ -82,6 +87,22 @@ function createPin(title, address, lat, lng, description, isVisited) {
     xmlhttp.open("POST", "ajaxFunctions/createPin.php", true);
 	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
     xmlhttp.send(postParams);
+}
+
+/*
+	Deletes pin based on its id
+*/
+function deletePin(id) {    
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			alert(xmlhttp.responseText);
+		}
+	}
+	var postParams = "id="+id;
+	xmlhttp.open("POST", "ajaxFunctions/deletePin.php", true);
+	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	xmlhttp.send(postParams);
 }
 
 /* Takes in 4 variables and makes a marker using them

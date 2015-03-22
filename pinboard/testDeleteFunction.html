@@ -20,7 +20,10 @@ function deletePin(id) {
 		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
         xmlhttp.send(postParams);
 	}
-deletePin(27);
+	var id = prompt("Please Enter ID", "Harry Potter");
+	if (id != null) {
+   deletePin(id);
+	}
 </script>
 <body>
 </body>
