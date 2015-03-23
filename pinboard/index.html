@@ -16,48 +16,48 @@
 <body>
 	<div id="fb-root"></div>
 	<script src="http://connect.facebook.net/en_US/all.js"></script>
-	<script>
-	//initialize the facebook app for the login
-	FB.init({ appId: '385230424989175', status: true, cookie: true, xfbml : true });
-	
-	/*
-	Logs the user into the Facebook app then it calls off to an AJAX function that saves the users email into 
-	*/
-	function doLogin() { 
-		FB.login(function(response) {
-		    if (response.authResponse) {
-			   console.log('Welcome!  Fetching your information.... ');
-			FB.api('/me', function(response) {
-			   console.log('Good to see you, ' + response.email + '.'); //press f12 to see the users email
-			   createUserSession(response.email);
-		    });
-			} else {
-				console.log('User cancelled login or did not fully authorize.');
-			}
-		} , {scope:'email'}); 
-	}
-	
-	function createUserSession(email) {
-    
+    <script>
+    //initialize the facebook app for the login
+    FB.init({ appId: '385230424989175', status: true, cookie: true, xfbml : true });
+
+    /*
+    Logs the user into the Facebook app then it calls off to an AJAX function that saves the users email into 
+    */
+    function doLogin() { 
+        FB.login(function(response) {
+            if (response.authResponse) {
+               console.log('Welcome!  Fetching your information.... ');
+            FB.api('/me', function(response) {
+               console.log('Good to see you, ' + response.email + '.'); //press f12 to see the users email
+               createUserSession(response.email);
+            });
+            } else {
+                console.log('User cancelled login or did not fully authorize.');
+            }
+        } , {scope:'email'}); 
+    }
+
+    function createUserSession(email) {
+
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                  if(email == xmlhttp.responseText)
-				 {
-					console.log("session created");
-					window.location.href = 'display.php';
-				 }
-				 else
-				 {
-					console.log("session NOT created successfully");
-				 }
+                 {
+                    console.log("session created");
+                    window.location.href = 'display.php';
+                 }
+                 else
+                 {
+                    console.log("session NOT created successfully");
+                 }
             }
         }
         xmlhttp.open("GET", "ajaxFunctions/createSesh.php?q=" + email, true);
         xmlhttp.send();
-    
-	}
-	</script>
+
+    }
+    </script>
   <div class="body"></div>
 		<div class="grad"></div>
 		<div class="header">

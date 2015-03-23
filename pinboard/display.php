@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>$USERS Pinboard!</title>
+  <!--Possible todo: Create it so users email or facebook name shows up on the title. Eg: Evan's Pinboard-->
+  <title>Pinboard!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
   <meta name="author" content="">
@@ -27,36 +28,41 @@
   <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-57-precomposed.png">
   <link rel="shortcut icon" href="img/favicon.png">
   
-	<script type="text/javascript" src="js/jquery.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/scripts.js"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-	<script src="js/maps.js" ></script>
-	
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/scripts.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script src="js/maps.js" ></script>
+    <script src="js/share.js" ></script>
 </head>
 
 <body>
+    <!-- Will move this after, just testing to get sharing page to facebook.-->
+    
 <div class="container">
 	<div class="row clearfix">
 		<div class="col-md-12 column">
 
 			<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
 				<div class="navbar-header">
-					 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="./display.html">Pinboard</a>
+					 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="./display.php">Pinboard</a>
 				</div>
 				
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
 						<li class="active">
-							<a href="#">Home</a>
+							<a href="./display.php">Home</a>
 						</li>
 						<li>
-							<a href="#">Share</a>
+							<a href="#">Help</a>
 						</li>
+                        <li>
+                            <a><div class="fb-share-button" data-href="http://evanclosson.space/pinboard" data-layout="button_count"></div></a>
+                        </li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li>
-							<a href="#">Logout</a>
+							<a href="./ajaxFunctions/logout.php">Logout</a>
 						</li>
 						<li class="dropdown">
 							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Options<strong class="caret"></strong></a>
@@ -73,7 +79,7 @@
 								<li class="divider">
 								</li>
 								<li>
-									<a href="#">Separated link</a>
+									<a>Seperated Link</a>
 								</li>
 							</ul>
 						</li>
@@ -152,7 +158,9 @@
 							<div class="panel-body">
 								<strong>Address:</strong> $row[address] <br>
 								<strong>Description: </strong> $row[description]<br>
-								<strong>Status: </strong> $visited
+								<strong>Status: </strong> $visited<br>
+                                <button type="button" class="btn btn-sm" id="update" onclick ="JOEY EDIT THOOS">Update</button>
+                                <button type="button" class="btn btn-primary btn-sm" id="delete" onclick ="JOEY EDIT THOOS">Delete</button><br>
 							</div>
 						</div>
 					</div>				
@@ -178,7 +186,7 @@ END;
 				<textarea id="pinDescription" name="pinDescription" placeholder="Enter A Description For Your New Pin!" style="resize:none;" class="form-control"></textarea><br>
 				<input type="checkbox" id="pinIsVisited" name="visitedCheck" value="true"> Have you been here before?<br><br/>
 				</form>
-				<button type="submit" class="btn btn-primary btn-med" id="submit" onclick ="submitPin();">Send</a>
+                <button type="submit" class="btn btn-primary btn-med" id="submit" onclick ="submitPin();">Send</button>
 			</div>
 		</div>
 		<div class="col-md-9 column">
