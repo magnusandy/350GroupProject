@@ -35,7 +35,7 @@ function initialize()
 		// Try W3C Geolocation (Preferred)
 		
 	
-	google.maps.event.addListener(map, 'rightclick', function(event){
+	google.maps.event.addListener(map, 'click', function(event){
 		showPinForm();
 		//clickEvent = event;
 		currentOnClick = event.latLng;
