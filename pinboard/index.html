@@ -2,7 +2,45 @@
 <html>
 
 <head>
+  <!-- G+ Login -->
+    <script src="https://apis.google.com/js/client:platform.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		var loginFinished = function(authResult)
+		{
+		  if (authResult)
+		  {
+			console.log(authResult);
+		  }
 
+		  gapi.client.load('oauth2', 'v2', function()
+		  {
+			gapi.client.oauth2.userinfo.get()
+			  .execute(function(resp)
+			  {
+				// Shows user email
+				console.log(resp.email);
+				createUserSession(resp.email);
+			  });
+		  });
+
+		};
+
+		var options = {
+		  'callback': loginFinished,
+		  'approvalprompt': 'force',
+		  'clientid': '928971590316-71bk3qt81hu6gckq7n2f7d9rsuotb24a.apps.googleusercontent.com',
+		  'scope': 'https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/userinfo.email',
+		  'requestvisibleactions': 'http://schemas.google.com/CommentActivity http://schemas.google.com/ReviewActivity',
+		  'cookiepolicy': 'single_host_origin',
+		  'theme': 'dark'
+		};
+
+		var renderBtn = function()
+		{
+		  gapi.signin.render("gsignin", options);
+		}
+
+	</script>
   <meta charset="UTF-8">
 
   <title>PinBoard Login</title>
@@ -13,7 +51,7 @@
 
 </head>
 
-<body>
+<body onload="renderBtn()">
 	<div id="fb-root"></div>
 	<script src="http://connect.facebook.net/en_US/all.js"></script>
     <script>
@@ -65,9 +103,12 @@
 		</div>
 		<br>
 		<div class="login">
-				<input id="123" type="text" placeholder="username" name="user"><br>
-				<input type="password" placeholder="password" name="password"><br>
-				<input type="button" value="Login" onclick="createUserSession(document.getElementById('123').value)"> <!-- THIS IS SUPER BAD AND SHOULD NOT STAY-->
+				<!--<input id="123" type="text" placeholder="username" name="user"><br>-->
+				<!--<input type="password" placeholder="password" name="password"><br>-->
+				<!-- <input type="button" value="Login" onclick="createUserSession(document.getElementById('123').value)"> THIS IS SUPER BAD AND SHOULD NOT STAY-->
+				<!--<div id="renderMe"></div>   -->
+				<br><br>
+				<button id="gsignin">Google+ Login</button>
 				<input type="button" value="Facebook Sign in" onclick="doLogin();return true;">
 		</div>
 

@@ -99,7 +99,8 @@ body{
 	margin-top: 10px;
 }
 
-.login input[type=button]{
+.login input[type=button],
+button{
 	width: 37%;
 	height: 25%;
 	background: #fff;
@@ -114,11 +115,13 @@ body{
 	margin-top: 10px;
 }
 
-.login input[type=button]:hover{
+.login input[type=button]:hover,
+button:hover{
 	opacity: 0.8;
 }
 
-.login input[type=button]:active{
+.login input[type=button]:active,
+button:hover{
 	opacity: 0.6;
 }
 
@@ -132,7 +135,8 @@ body{
 	border: 1px solid rgba(255,255,255,0.9);
 }
 
-.login input[type=button]:focus{
+.login input[type=button]:focus,
+button:focus{
 	outline: none;
 }
 
@@ -143,3 +147,10 @@ body{
 ::-moz-input-placeholder{
    color: rgba(255,255,255,0.6);
 }
+
+#signin-button {
+   padding: 15px;
+  }
+#oauth2-results pre { margin: 0; padding:0; width: 600px;}
+  .hide { display: none;}
+  .show { display: block;}
