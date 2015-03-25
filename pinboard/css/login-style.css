@@ -22,9 +22,9 @@ body{
 }
 
 .header{
-	position: absolute;
+	position: fixed;
 	top: calc(50% - 35px);
-	left: calc(50% - 255px);
+	left: calc(52% - 255px);
 	z-index: 2;
 }
 
@@ -41,26 +41,13 @@ body{
 }
 
 .login{
-	position: absolute;
+	position: fixed;
 	top: calc(50% - 75px);
 	left: calc(50% - 50px);
 	height: 150px;
 	width: 350px;
 	padding: 10px;
 	z-index: 2;
-}
-
-.login input[type=text]{
-	width: 250px;
-	height: 30px;
-	background: transparent;
-	border: 1px solid rgba(255,255,255,0.6);
-	border-radius: 2px;
-	color: #fff;
-	font-family: 'Exo', sans-serif;
-	font-size: 16px;
-	font-weight: 400;
-	padding: 4px;
 }
 
 .login input[type=password]{
@@ -114,16 +101,6 @@ button:hover{
 .login input[type=button]:active,
 button:hover{
 	opacity: 0.6;
-}
-
-.login input[type=text]:focus{
-	outline: none;
-	border: 1px solid rgba(255,255,255,0.9);
-}
-
-.login input[type=password]:focus{
-	outline: none;
-	border: 1px solid rgba(255,255,255,0.9);
 }
 
 .login input[type=button]:focus,
