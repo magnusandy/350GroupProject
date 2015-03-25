@@ -21,7 +21,8 @@ function initialize()
 		directionDisplay = new google.maps.DirectionsRenderer();
 		var myOptions = {
 			zoom: 2,
-			mapTypeId: google.maps.MapTypeId.ROADMAP
+			mapTypeId: google.maps.MapTypeId.ROADMAP,
+            zoomControl: false
 		};
 		map = new google.maps.Map(document.getElementById('map-canvas'), myOptions);
 		directionDisplay.setMap(map);
