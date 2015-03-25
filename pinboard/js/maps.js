@@ -90,13 +90,29 @@ function createPin(title, address, lat, lng, description, isVisited) {
 }
 
 /*
+A simple function that creates a confirmation dialog before deleting a pin
+*/
+function confirmDelete(id)
+{
+	var confirm = window.confirm("Are you sure you want to delete?")
+	if(confirm)
+	{
+		deletePin(id);
+	}
+	else
+	{
+		
+	}
+}
+
+/*
 	Deletes pin based on its id
 */
 function deletePin(id) {    
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange = function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-			//DO WHATEVER YOU WANT TO DO AFTER DELETION IS COMPLETE
+			window.location = "display.php";
 		}
 	}
 	var postParams = "id="+id;

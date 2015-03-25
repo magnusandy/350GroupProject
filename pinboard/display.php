@@ -34,7 +34,6 @@
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
     <script src="js/maps.js" ></script>
     <script src="js/share.js" ></script>
-    <script src="js/confirmDelete.js" ></script>
 </head>
 
 <body>
@@ -161,7 +160,7 @@
 								<strong>Description: </strong> $row[description]<br>
 								<strong>Status: </strong> $visited<br>
                                 <button type="button" class="btn btn-sm" id="update" onclick ="JOEY EDIT THOOS">Update</button>
-                                <button type="button" class="btn btn-primary btn-sm" id="delete" onclick=confirmDelete("$id")>Delete</button><br>
+                                <button type="button" class="btn btn-primary btn-sm" id="delete" onclick=confirmDelete($row[id])>Delete</button><br>
 							</div>
 						</div>
 					</div>				
