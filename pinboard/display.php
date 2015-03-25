@@ -57,7 +57,7 @@
 							<a href="#">Help</a>
 						</li>
                         <li>
-                            <a><div class="fb-share-button" data-href="http://evanclosson.space/pinboard" data-layout="button_count"></div></a>
+                            <a><div class="fb-share-button" data-href="http://evanclosson.space/pinboard" data-layout="button_count"></div><div id="fb-root"></div></a>
                         </li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">

@@ -14,6 +14,7 @@ var isVisited;
 var clickEvent;
 var currentOnClick;
 var allMarkers;
+var MASTERinfoWindow = new google.maps.InfoWindow();
 function initialize()
 	{
 		geocoder = new google.maps.Geocoder();
@@ -28,7 +29,7 @@ function initialize()
 		//Loop through all the markers from the database and add them to the map
 		for(var i = 0; i < allMarkers.length; i++)
 		{
-			 placeMarker(allMarkers[i]["lat"],allMarkers[i]["lng"],allMarkers[i]["title"],allMarkers[i]["isVisited"])
+			 placeMarker(allMarkers[i]["lat"],allMarkers[i]["lng"],allMarkers[i]["title"],allMarkers[i]["isVisited"], allMarkers[i]["description"],allMarkers[i]["address"]);
 		}
 		map.setCenter(new google.maps.LatLng(25,10));
   
@@ -147,9 +148,11 @@ function updatePin(id, title, description, isVisited) {
 	pinName : the title for the pin
 	description : the description for the pin
 */
-function placeMarker(pinLat,pinLng,pinName,isVisited){
+function placeMarker(pinLat,pinLng,pinName,isVisited, description, address){
+	//LatLng object for use on the marker
 	var latLng = new google.maps.LatLng(pinLat, pinLng);
 	var img;
+	//chose which color to make the pin according to if its been visited or not
 	if(isVisited == true)
 	{
 		img = "img/visited.png";
@@ -158,6 +161,18 @@ function placeMarker(pinLat,pinLng,pinName,isVisited){
 	{
 		img = "img/unvisited.png";	
 	}
+	
+	//create an info window
+	var contentString = '<div id="content">' +
+	'<h1 id="firstHeading" class="firstHeading">'+pinName+'</h1>'+
+	'<p><b>Address: </b>'+address+'</p><br>'+
+	'<p><b>Description: </b>'+description+'</p><br>'+
+	'</div>';
+	var infowindow = new google.maps.InfoWindow({
+    content: contentString
+	});
+	
+	//create Marker with given lat, long and title
 	var marker = new google.maps.Marker({
 		//Takes the individual Lat and Lng and parses them into a location for position
 		position:  latLng,
@@ -165,6 +180,14 @@ function placeMarker(pinLat,pinLng,pinName,isVisited){
 		title: pinName,
 		icon: img
 	});
+	//bind infoWindow to the marker
+	google.maps.event.addListener(marker, 'click', function() {
+	MASTERinfoWindow.close();
+	MASTERinfoWindow = infowindow;
+    MASTERinfoWindow.open(map,marker);
+	map.setCenter(new google.maps.LatLng(pinLat,pinLng));	
+    });
 }
+
 
 google.maps.event.addDomListener(window, 'load', initialize);
