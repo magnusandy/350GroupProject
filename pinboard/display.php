@@ -34,7 +34,21 @@
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
     <script src="js/maps.js" ></script>
     <script src="js/share.js" ></script>
+    
+    <script>
+        $('#panel-66082').on('shown.bs.collapse', function () {
+
+  var panel = $(this).find('.in');
+
+  $('inner_marker').animate({
+        scrollTop: panel.offset().top
+  }, 500);
+
+});
+    
+    </script>
 </head>
+
 
 <body>
     <!-- Will move this after, just testing to get sharing page to facebook.-->
