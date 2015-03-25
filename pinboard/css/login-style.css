@@ -5,7 +5,11 @@
 	Figure out how to span text more to right, may be good as is.
 	Incorporate into the login php we have
 	Figure out why .body and .grad break things*/
+html {
+    height: 100%;   
+}
 body{
+    height: 100%;
 	margin: 0;
 	padding: 0;
 	background: #fff;
