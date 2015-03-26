@@ -41,6 +41,7 @@ function initialize()
 		showPinForm();
 		//clickEvent = event;
 		currentOnClick = event.latLng;
+        tempPlaceMarker(event.latLng);
 	});
 }
 	
@@ -190,5 +191,13 @@ function placeMarker(pinLat,pinLng,pinName,isVisited, description, address){
     });
 }
 
-
+function tempPlaceMarker(location)
+{
+    var tempMarker = new google.maps.Marker({
+        position: location,
+        map: map,
+        title: "Temp Marker"
+    });
+       
+}
 google.maps.event.addDomListener(window, 'load', initialize);
