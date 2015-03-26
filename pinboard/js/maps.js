@@ -194,10 +194,12 @@ function placeMarker(pinLat,pinLng,pinName,isVisited, description, address){
 
 function tempPlaceMarker(location)
 {
+	img = "img/newMarkerTemp.png"
 	tempMarker.setMap(null);
     tempMarker = new google.maps.Marker({
         position: location,
         map: map,
+		icon: img,
         title: "New Marker Position"
     });
        
