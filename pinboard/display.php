@@ -1,3 +1,8 @@
+<?php 
+    session_start();
+    if($_SESSION["email"] == null) header("location: ./index.html");
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
