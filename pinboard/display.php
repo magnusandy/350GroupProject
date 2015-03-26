@@ -132,7 +132,6 @@ $('#panel-66082').on('shown.bs.collapse', function (e) {
 				
 				<?php
 				// get the q parameter from URL
-				session_start();
 				//$servername = "localhost";
 				//$username = "root";
 				//$dbname = "pinboard";
