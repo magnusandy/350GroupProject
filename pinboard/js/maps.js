@@ -15,6 +15,7 @@ var clickEvent;
 var currentOnClick;
 var allMarkers;
 var MASTERinfoWindow = new google.maps.InfoWindow();
+var tempMarker = new google.maps.Marker();
 function initialize()
 	{
 		geocoder = new google.maps.Geocoder();
@@ -193,10 +194,11 @@ function placeMarker(pinLat,pinLng,pinName,isVisited, description, address){
 
 function tempPlaceMarker(location)
 {
-    var tempMarker = new google.maps.Marker({
+	tempMarker.setMap(null);
+    tempMarker = new google.maps.Marker({
         position: location,
         map: map,
-        title: "Temp Marker"
+        title: "New Marker Position"
     });
        
 }
