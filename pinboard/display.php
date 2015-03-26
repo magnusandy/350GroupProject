@@ -34,6 +34,7 @@
   <link rel="shortcut icon" href="img/favicon.png">
   
     <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/scripts.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
@@ -41,14 +42,22 @@
     <script src="js/share.js" ></script>
     
     <script>
-        $('#panel-66082').on('shown.bs.collapse', function () {
+$('#panel-66082').on('shown.bs.collapse', function (e) {
 
-  var panel = $(this).find('.in');
+  // Validate this panel belongs to this accordian, and not an embedded one
+  var actualAccordianId = $('a[href="#' + $(e.target).attr('id') + '"').data('parent');
+  var targetAccordianId = '#' + $(this).attr('id');
+  if (actualAccordianId !== targetAccordianId) return;
 
-  $('inner_marker').animate({
-        scrollTop: panel.offset().top
-  }, 500);
-
+  var clickedHeader = $(this).find('.panel > .collapse.in').closest('.panel').find('.panel-heading');
+  var offset = clickedHeader.offset();
+  var top = $(window).scrollTop();
+  if(offset) {
+    var topOfHeader = offset.top;
+    if(topOfHeader < top) {
+      $('html,body').animate({ scrollTop: topOfHeader}, 100, 'swing');
+    }
+  }
 });
     
     </script>
