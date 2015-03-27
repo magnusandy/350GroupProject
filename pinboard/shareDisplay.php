@@ -1,6 +1,5 @@
 <?php 
-   // session_start();
-   // if($_SESSION["email"] == null) header("location: ./index.html");
+    if($_GET["email"] == null) header("location: ./index.html");
 
 ?>
 <!DOCTYPE html>
@@ -120,7 +119,6 @@ $('#panel-66082').on('shown.bs.collapse', function (e) {
 				<h1>
 					Pinboard <small>Maps for the travelling soul!</small>
 				</h1>
-				<button onclick="centerOnMe()">Create Pin At My Position</button>
 			</div>
 		</div>
 	</div>
@@ -187,8 +185,6 @@ $('#panel-66082').on('shown.bs.collapse', function (e) {
 								<strong>Address:</strong> $row[address] <br>
 								<strong>Description: </strong> $row[description]<br>
 								<strong>Status: </strong> $visited<br>
-                                <button type="button" class="btn btn-sm" id="update" onclick ="JOEY EDIT THOOS">Update</button>
-                                <button type="button" class="btn btn-primary btn-sm" id="delete" onclick=confirmDelete($row[id])>Delete</button><br>
 							</div>
 						</div>
 					</div>				

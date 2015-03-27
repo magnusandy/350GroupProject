@@ -1,6 +1,12 @@
 <?php 
     session_start();
     if($_SESSION["email"] == null) header("location: ./index.html");
+    function getShare() {
+        $email = $_SESSION["email"];
+        $url = 'http://evanclosson.space/pinboard/shareDisplay.php?email='.$email;
+        return $url;
+    }
+    $encodeurl = urlencode( getShare() );
 
 ?>
 <!DOCTYPE html>
@@ -39,7 +45,6 @@
     <script type="text/javascript" src="js/scripts.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
     <script src="js/maps.js" ></script>
-    <script src="js/share.js" ></script>
     
     <script>
 $('#panel-66082').on('shown.bs.collapse', function (e) {
@@ -85,7 +90,7 @@ $('#panel-66082').on('shown.bs.collapse', function (e) {
 							<a href="#">Help</a>
 						</li>
                         <li>
-                            <a><div class="fb-share-button" data-href="http://evanclosson.space/pinboard" data-layout="button_count"></div><div id="fb-root"></div></a>
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $encodeurl; ?>" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=<?php echo $encodeurl; ?>', 'newwindow', 'width=600, height=200'); return false;">Share</a>
                         </li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
