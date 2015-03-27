@@ -120,6 +120,7 @@ $('#panel-66082').on('shown.bs.collapse', function (e) {
 				<h1>
 					Pinboard <small>Maps for the travelling soul!</small>
 				</h1>
+				<button type="button" class="btn btn-primary btn-med" onclick="centerOnMe()">Create Pin At My Position</button>
 			</div>
 		</div>
 	</div>
@@ -203,7 +204,6 @@ END;
 					
 				</div>
 			</div>
-			<button type="button" class="btn btn-primary btn-med" onclick="centerOnMe()">Create Pin At My Position</button>
 			<!-- This is the code for the New Pin Form -->
 			<div id="newPinForm" class="hidden">
 				<form action="#" id="form" method="post" name="form" onsubmit="return false">
