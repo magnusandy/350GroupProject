@@ -230,6 +230,7 @@ END;
 				<input id="updatePinName" name="updatePinName" placeholder="Enter a New Name" type="text" class="form-control"><br>
 				<textarea id="updatePinDescription" name="updatePinDescription" placeholder="Enter A New Description For This Pin" style="resize:none;" class="form-control"></textarea><br>
 				<input type="checkbox" id="updatePinIsVisited" name="updateVisitedCheck" value="true"> Have you visited here yet?<br><br/>
+				<input id="updatePinID" name="updatePinID" placeholder="" type="text" class="hidden">
 				</form>
                 <button type="submit" class="btn btn-primary btn-med" id="submit" onclick ="updatePin();">Update</button>
 			</div>

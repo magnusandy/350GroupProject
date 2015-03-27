@@ -3,7 +3,12 @@ function hideNewPinForm(){
 	return false;
 }
 
-function showUpdateForm(){
+function showUpdateForm(id,title,description,isVisited){
 	hideNewPinForm();
-	document.getElementById("updatePinForm").className = "";
+	var updateForm = document.getElementById("updatePinForm");
+	updateForm.className = "";
+	document.getElementById("updatePinID").value = id;
+	document.getElementById("updatePinName").value = title;
+	document.getElementById("updatePinDescription").value = description;
+	document.getElementById("updatePinName").checked = true;
 }
