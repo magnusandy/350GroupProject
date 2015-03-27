@@ -10,5 +10,5 @@ function showUpdateForm(id,title,description,isVisited){
 	document.getElementById("updatePinID").value = id;
 	document.getElementById("updatePinName").value = title;
 	document.getElementById("updatePinDescription").value = description;
-	document.getElementById("updatePinName").checked = true;
+	document.getElementById("updatePinName").checked = isVisited;
 }
