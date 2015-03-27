@@ -7,7 +7,6 @@ var directionDisplay;
 var geocoder;
 var map;
 var curMarker = new google.maps.Marker;
-var id;
 var name;
 var address;
 var description;
@@ -45,12 +44,9 @@ function initialize()
 }
 	
 function showPinForm(){
-	var updatePinForm = document.getElementById("updatePinForm");
-	if(updatePinForm.className != "hidden"){
-		updatePinForm.className = "hidden";
-	}
 	var pinForm = document.getElementById("newPinForm");
-	if(pinForm.className == "hidden"){
+	var currentClass = pinForm.className;
+	if(currentClass == "hidden"){
 		pinForm.className = "";
 	}
 }
@@ -133,36 +129,18 @@ and description variables will be put into the database, so if the user does not
 change the Title/Description, make sure the old ones are passed in. Also, the isVisited param 
 MUST BE a boolean not an empty string or something else it wont work.
 */
-function updatePin() {    
-   var xmlhttp = new XMLHttpRequest();
-   xmlhttp.onreadystatechange = function() {
-      if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-			//DO WHATEVER YOU WANT TO DO WHEN UPDATE IS COMPLETE
-      }
-   }
-	//NEED TO PUT IN THE CORRECT ID HERE!!
-	//id = 
-	title = document.getElementById("updatePinName").value;
-	description = document.getElementById("updatePinDescription").value;
-	isVisited = document.getElementById("updatePinIsVisited");
-	if(isVisited.checked)
-	{
-		isVisited = true;
-	}
-	else
-	{
-		isVisited = false;
-	}
-	if(name != ""){
+function updatePin(id, title, description, isVisited) {    
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				//DO WHATEVER YOU WANT TO DO WHEN UPDATE IS COMPLETE
+            }
+        }
 		var postParams = "id="+id+"&title="+title+"&description="+description+"&isVisited="+isVisited;
-		xmlhttp.open("POST", "ajaxFunctions/updatePin.php", true);
+        xmlhttp.open("POST", "ajaxFunctions/updatePin.php", true);
 		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-		xmlhttp.send(postParams);
-	} else {
-		var pinError = document.getElementById("updatePinNameError");
-		pinError.className = "";
+        xmlhttp.send(postParams);
 	}
-}
 
 /* Takes in 4 variables and makes a marker using them
 	pinLat : latitude of the pin
@@ -236,9 +214,10 @@ function centerOnMe()
 	showPinForm();
     navigator.geolocation.getCurrentPosition(function(position) {
       currentOnClick = new google.maps.LatLng(position.coords.latitude,
-															 position.coords.longitude);
+                                       position.coords.longitude);
+
       tempPlaceMarker(currentOnClick);
-		map.setZoom(12);
+	  map.setZoom(12);
       map.setCenter(currentOnClick);
     }, function() {
       alert("failed")

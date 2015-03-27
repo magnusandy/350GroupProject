@@ -1,9 +1,4 @@
-function hideNewPinForm(){
+function hideForm(){
 	document.getElementById("newPinForm").className = "hidden";
 	return false;
-}
-
-function showUpdateForm(){
-	hideNewPinForm();
-	document.getElementById("updatePinForm").className = "";
 }
