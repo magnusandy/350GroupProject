@@ -154,11 +154,10 @@ function updatePin() {
 		isVisited = false;
 	}
 	if(name != ""){
-	/*	var postParams = "id="+id+"&title="+title+"&description="+description+"&isVisited="+isVisited;
+		var postParams = "id="+id+"&title="+title+"&description="+description+"&isVisited="+isVisited;
 		xmlhttp.open("POST", "ajaxFunctions/updatePin.php", true);
 		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 		xmlhttp.send(postParams);
-	*/
 	} else {
 		var pinError = document.getElementById("updatePinNameError");
 		pinError.className = "";
