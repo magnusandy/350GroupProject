@@ -191,7 +191,7 @@ $('#panel-66082').on('shown.bs.collapse', function (e) {
 								<strong>Address:</strong> $row[address] <br>
 								<strong>Description: </strong> $row[description]<br>
 								<strong>Status: </strong> $visited<br>
-                                <button type="button" class="btn btn-sm" id="update" onclick ="showUpdateForm();">Update</button>
+                                <button type="button" class="btn btn-sm" id="update" onclick ="showUpdateForm($row[id], $row[description] $row[title], $row[isVisited]);">Update</button>
                                 <button type="button" class="btn btn-primary btn-sm" id="delete" onclick=confirmDelete($row[id])>Delete</button><br>
 							</div>
 						</div>
