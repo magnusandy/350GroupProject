@@ -186,7 +186,7 @@ $('#panel-66082').on('shown.bs.collapse', function (e) {
 								<strong>Address:</strong> $row[address] <br>
 								<strong>Description: </strong> $row[description]<br>
 								<strong>Status: </strong> $visited<br>
-                                <button type="button" class="btn btn-sm" id="update" onclick ="JOEY EDIT THOOS">Update</button>
+                                <button type="button" class="btn btn-sm" id="update" onclick ="showUpdateForm();">Update</button>
                                 <button type="button" class="btn btn-primary btn-sm" id="delete" onclick=confirmDelete($row[id])>Delete</button><br>
 							</div>
 						</div>
@@ -215,6 +215,18 @@ END;
 				<input type="checkbox" id="pinIsVisited" name="visitedCheck" value="true"> Have you been here before?<br><br/>
 				</form>
                 <button type="submit" class="btn btn-primary btn-med" id="submit" onclick ="submitPin();">Send</button>
+			</div>
+			
+			<!-- This is the code for the Update Pin Form -->
+			<div id="updatePinForm" class="hidden">
+				<form action="#" id="form" method="post" name="form" onsubmit="return false">
+				<h3>Update Pin Form</h3>
+				<p id="updatePinNameError" name="pinNameError" style="color: red;" type="text" class="hidden">*A name is required.</p>
+				<input id="updatePinName" name="updatePinName" placeholder="Enter a New Name" type="text" class="form-control"><br>
+				<textarea id="updatePinDescription" name="updatePinDescription" placeholder="Enter A New Description For This Pin" style="resize:none;" class="form-control"></textarea><br>
+				<input type="checkbox" id="updatePinIsVisited" name="updateVisitedCheck" value="true"> Have you visited here yet?<br><br/>
+				</form>
+                <button type="submit" class="btn btn-primary btn-med" id="submit" onclick ="updatePin();">Update</button>
 			</div>
 		</div>
 		<div class="col-md-9 column">
