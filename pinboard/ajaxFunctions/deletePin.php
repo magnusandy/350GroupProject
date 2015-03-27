@@ -1,10 +1,14 @@
 <?php
 // get the q parameter from URL
 session_start();
-$servername = "lovett.usask.ca";
-$username = "cmpt350_amm215";
-$dbname = "cmpt350_amm215";
-$password = "5eukmjjz9w";
+$servername = "localhost";
+$username = "root";
+$dbname = "pinboard";
+$password = "qwertyhero";
+//$servername = "lovett.usask.ca";
+//$username = "cmpt350_amm215";
+//$dbname = "cmpt350_amm215";
+//$password = "5eukmjjz9w";
 $email = $_SESSION["email"];
 
 $id = (int)$_POST["id"];
