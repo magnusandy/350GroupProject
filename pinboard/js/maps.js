@@ -16,28 +16,25 @@ var currentOnClick;
 var allMarkers;
 var MASTERinfoWindow = new google.maps.InfoWindow();
 var tempMarker = new google.maps.Marker();
+
+
 function initialize()
+{
+	geocoder = new google.maps.Geocoder();
+	directionDisplay = new google.maps.DirectionsRenderer();
+	var myOptions = {
+		zoom: 2,
+		mapTypeId: google.maps.MapTypeId.ROADMAP,
+		zoomControl: false
+	};
+	map = new google.maps.Map(document.getElementById('map-canvas'), myOptions);
+	directionDisplay.setMap(map);
+	//Loop through all the markers from the database and add them to the map
+	for(var i = 0; i < allMarkers.length; i++)
 	{
-		geocoder = new google.maps.Geocoder();
-		directionDisplay = new google.maps.DirectionsRenderer();
-		var myOptions = {
-			zoom: 2,
-			mapTypeId: google.maps.MapTypeId.ROADMAP,
-            zoomControl: false
-		};
-		map = new google.maps.Map(document.getElementById('map-canvas'), myOptions);
-		directionDisplay.setMap(map);
-		
-		//Loop through all the markers from the database and add them to the map
-		for(var i = 0; i < allMarkers.length; i++)
-		{
-			 placeMarker(allMarkers[i]["lat"],allMarkers[i]["lng"],allMarkers[i]["title"],allMarkers[i]["isVisited"], allMarkers[i]["description"],allMarkers[i]["address"]);
-		}
-		map.setCenter(new google.maps.LatLng(25,10));
-  
-		// Try W3C Geolocation (Preferred)
-		
-	
+		 placeMarker(allMarkers[i]["lat"],allMarkers[i]["lng"],allMarkers[i]["title"],allMarkers[i]["isVisited"], allMarkers[i]["description"],allMarkers[i]["address"]);
+	}
+	map.setCenter(new google.maps.LatLng(25,10));
 	google.maps.event.addListener(map, 'click', function(event){
 		showPinForm();
 		//clickEvent = event;
@@ -192,6 +189,10 @@ function placeMarker(pinLat,pinLng,pinName,isVisited, description, address){
     });
 }
 
+/*
+Creates a new blue pin, that signifies were the pin your 
+currently creating will go
+*/
 function tempPlaceMarker(location)
 {
 	img = "img/newMarkerTemp.png"
@@ -201,7 +202,25 @@ function tempPlaceMarker(location)
         map: map,
 		icon: img,
         title: "New Marker Position"
+    });     
+}
+
+/*
+Create a temp marker at the users current location via GEOLOCATION
+and opens the pin form for making a marker at the current location
+*/
+function centerOnMe()
+{
+	showPinForm();
+    navigator.geolocation.getCurrentPosition(function(position) {
+      currentOnClick = new google.maps.LatLng(position.coords.latitude,
+                                       position.coords.longitude);
+
+      tempPlaceMarker(currentOnClick);
+	  map.setZoom(12);
+      map.setCenter(currentOnClick);
+    }, function() {
+      alert("failed")
     });
-       
 }
 google.maps.event.addDomListener(window, 'load', initialize);

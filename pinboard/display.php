@@ -120,6 +120,7 @@ $('#panel-66082').on('shown.bs.collapse', function (e) {
 				<h1>
 					Pinboard <small>Maps for the travelling soul!</small>
 				</h1>
+				<button onclick="centerOnMe()">Create Pin At My Position</button>
 			</div>
 		</div>
 	</div>
