@@ -184,7 +184,7 @@ $('#panel-66082').on('shown.bs.collapse', function (e) {
 						echo <<<END
 						<div class="panel panel-default">
 						<div class="panel-heading">
-							 <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-66082" onclick='map.setCenter( new google.maps.LatLng($row[lat], $row[lng])); map.setZoom(7);' href="#panel-element-$row[id]">$row[title]</a>
+							 <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-66082" onclick='map.setCenter( new google.maps.LatLng($row[lat], $row[lng])); map.setZoom(7);' href="#panel-element-$row[id]">$row[title]</a><button type="button" style="float:right;" class="btn btn-primary btn-sm" id="delete" onclick=confirmDelete($row[id])>X</button>
 						</div>
 						<div id="panel-element-$row[id]" class="panel-collapse collapse">
 							<div class="panel-body">
@@ -192,7 +192,7 @@ $('#panel-66082').on('shown.bs.collapse', function (e) {
 								<strong>Description: </strong> $row[description]<br>
 								<strong>Status: </strong> $visited<br>
                                 <button type="button" class="btn btn-sm" id="update" onclick ="showUpdateForm($row[id], $row[title], $row[description], $row[isVisited]);">Update</button>
-                                <button type="button" class="btn btn-primary btn-sm" id="delete" onclick=confirmDelete($row[id])>Delete</button><br>
+                                <br>
 							</div>
 						</div>
 					</div>				
