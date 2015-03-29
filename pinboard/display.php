@@ -184,7 +184,7 @@ $('#panel-66082').on('shown.bs.collapse', function (e) {
 						echo <<<END
 						<div class="panel panel-default">
 						<div class="panel-heading">
-							 <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-66082" onclick='map.setCenter( new google.maps.LatLng($row[lat], $row[lng])); map.setZoom(7);' href="#panel-element-$row[id]">$row[title]</a><button type="button" style="float:right; height:25px; padding-bottom:5px; position:relative;" class="btn btn-primary btn-sm" id="delete" onclick=confirmDelete($row[id])><span style="height:25px; padding-bottom:5px;">X</span></button>
+							 <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-66082" onclick='map.setCenter( new google.maps.LatLng($row[lat], $row[lng])); map.setZoom(7);' href="#panel-element-$row[id]">$row[title]</a><button type="button" style="float:right; height:25px; padding-bottom:5px; position:relative;" class="btn btn-primary btn-sm" id="delete" onclick=confirmDelete($row[id])><span style="height:25px; padding-bottom:5px;"><span class="glyphicon glyphicon-remove"></span></span></button>
 						</div>
 						<div id="panel-element-$row[id]" class="panel-collapse collapse">
 							<div class="panel-body">
