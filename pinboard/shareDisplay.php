@@ -1,6 +1,13 @@
 <?php 
     if($_GET["email"] == null) header("location: ./index.html");
 
+    function getShare() {
+        $email = $_GET["email"];
+        $url = 'http://evanclosson.space/pinboard/shareDisplay.php?email='.$email;
+        return $url;
+    }
+    $encodeurl = urlencode( getShare() );
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -105,31 +112,15 @@
 							<a href="/help" id="help">Help</a>
 						</li>
                         <li>
-                            <a><div class="fb-share-button" data-href="http://evanclosson.space/pinboard" data-layout="button_count"></div><div id="fb-root"></div></a>
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $encodeurl; ?>" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=<?php echo $encodeurl; ?>', 'newwindow', 'width=600, height=200'); return false;">Share</a>
                         </li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li>
-							<a href="./ajaxFunctions/logout.php">Logout</a>
+							<a href="./index.html">Login</a>
 						</li>
 						<li class="dropdown">
 							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Options<strong class="caret"></strong></a>
-							<ul class="dropdown-menu">
-								<li>
-									<a href="#">Settings</a>
-								</li>
-								<li>
-									<a href="#">Another action</a>
-								</li>
-								<li>
-									<a href="#">Something else here</a>
-								</li>
-								<li class="divider">
-								</li>
-								<li>
-									<a>Seperated Link</a>
-								</li>
-							</ul>
 						</li>
 					</ul>
 				</div>
