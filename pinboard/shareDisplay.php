@@ -41,24 +41,45 @@
     <script src="js/share.js" ></script>
     
     <script>
-$('#panel-66082').on('shown.bs.collapse', function (e) {
+        $('#panel-66082').on('shown.bs.collapse', function (e) {
 
-  // Validate this panel belongs to this accordian, and not an embedded one
-  var actualAccordianId = $('a[href="#' + $(e.target).attr('id') + '"').data('parent');
-  var targetAccordianId = '#' + $(this).attr('id');
-  if (actualAccordianId !== targetAccordianId) return;
+          // Validate this panel belongs to this accordian, and not an embedded one
+          var actualAccordianId = $('a[href="#' + $(e.target).attr('id') + '"').data('parent');
+          var targetAccordianId = '#' + $(this).attr('id');
+          if (actualAccordianId !== targetAccordianId) return;
 
-  var clickedHeader = $(this).find('.panel > .collapse.in').closest('.panel').find('.panel-heading');
-  var offset = clickedHeader.offset();
-  var top = $(window).scrollTop();
-  if(offset) {
-    var topOfHeader = offset.top;
-    if(topOfHeader < top) {
-      $('html,body').animate({ scrollTop: topOfHeader}, 100, 'swing');
-    }
-  }
-});
+          var clickedHeader = $(this).find('.panel > .collapse.in').closest('.panel').find('.panel-heading');
+          var offset = clickedHeader.offset();
+          var top = $(window).scrollTop();
+          if(offset) {
+            var topOfHeader = offset.top;
+            if(topOfHeader < top) {
+              $('html,body').animate({ scrollTop: topOfHeader}, 100, 'swing');
+            }
+          }
+        });
     
+        //Help function for simple popup!
+        $(function() {
+          $('#help').on('click', function() {
+            if($(this).hasClass('selected')) {
+              deselect($(this));               
+            } else {
+              $(this).addClass('selected');
+              $('.pop').slideFadeToggle();
+            }
+            return false;
+          });
+
+          $('.close').on('click', function() {
+            deselect($('#help'));
+            return false;
+          });
+        });
+
+        $.fn.slideFadeToggle = function(easing, callback) {
+          return this.animate({ opacity: 'toggle', height: 'toggle' }, 'fast', easing, callback);
+        };
     </script>
 </head>
 
@@ -81,7 +102,7 @@ $('#panel-66082').on('shown.bs.collapse', function (e) {
 							<a href="./display.php">Home</a>
 						</li>
 						<li>
-							<a href="#">Help</a>
+							<a href="/help" id="help">Help</a>
 						</li>
                         <li>
                             <a><div class="fb-share-button" data-href="http://evanclosson.space/pinboard" data-layout="button_count"></div><div id="fb-root"></div></a>
@@ -215,6 +236,16 @@ END;
 		</div>
 		<div class="col-md-9 column">
 			 <span class="label label-default">Map</span> 
+            <div class="messagepop pop">
+                <div class="page-header"> <h2>Instructions</h2><br> </div>
+                <p>Left-click (or just tap the screen) anywhere on the map to place a marker!</p>
+                <p>To zoom in, scroll the mouse wheel! (Mobile users, use pinch zoom)!</p>
+                <p>Wish to delete a pin? Just tap the X!</p>
+                <p>Click on the marker on the left side to view that marker, it will automatically move you to that marker!</p>
+                <p>While you click on the marker, you can update your pin by a press of the button!</p>
+                <p>Wish to close this menu? Click the X or just click Help again!</p>
+                <a class="close" href="/"><span class="glyphicon glyphicon-remove"></span></a>
+            </div>
 				<div id="map-canvas" class="circle-text"></div>
 		</div>
 

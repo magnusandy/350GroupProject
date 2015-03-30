@@ -47,24 +47,52 @@
     <script src="js/maps.js" ></script>
     
     <script>
-$('#panel-66082').on('shown.bs.collapse', function (e) {
+        //Still needs work. Does scroll but needs heavy mod
+       /* $(function () {
+        $('.panel-group').on('shown.bs.collapse', function (e) {
+            var offset = $('.panel.panel-default > .panel-collapse.in').offset();
+            if(offset) {
+                $('#inner').animate({
+                    scrollTop: $('.panel-collapse.in').siblings('.panel-heading').offset().top
+                }, 500); 
+            }
+        });
+        });*/
 
-  // Validate this panel belongs to this accordian, and not an embedded one
-  var actualAccordianId = $('a[href="#' + $(e.target).attr('id') + '"').data('parent');
-  var targetAccordianId = '#' + $(this).attr('id');
-  if (actualAccordianId !== targetAccordianId) return;
+        function deselect(e) {
+  $('.pop').slideFadeToggle(function() {
+    e.removeClass('selected');
+  });    
+}
 
-  var clickedHeader = $(this).find('.panel > .collapse.in').closest('.panel').find('.panel-heading');
-  var offset = clickedHeader.offset();
-  var top = $(window).scrollTop();
-  if(offset) {
-    var topOfHeader = offset.top;
-    if(topOfHeader < top) {
-      $('html,body').animate({ scrollTop: topOfHeader}, 100, 'swing');
+//Help function for simple popup!
+$(function() {
+  $('#help').on('click', function() {
+    if($(this).hasClass('selected')) {
+      deselect($(this));               
+    } else {
+      $(this).addClass('selected');
+      $('.pop').slideFadeToggle();
     }
-  }
+    return false;
+  });
+
+  $('.close').on('click', function() {
+    deselect($('#help'));
+    return false;
+  });
 });
+
+$.fn.slideFadeToggle = function(easing, callback) {
+  return this.animate({ opacity: 'toggle', height: 'toggle' }, 'fast', easing, callback);
+};
     
+//For dropdown menu
+$(function() {
+    $("ul.dropdown-menu").on("click", "[data-stopPropagation]", function(e) {
+        e.stopPropagation();
+    });
+});
     </script>
 </head>
 
@@ -87,7 +115,7 @@ $('#panel-66082').on('shown.bs.collapse', function (e) {
 							<a href="./display.php">Home</a>
 						</li>
 						<li>
-							<a href="#">Help</a>
+							<a href="/help" id="help">Help</a>
 						</li>
                         <li>
                             <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $encodeurl; ?>" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=<?php echo $encodeurl; ?>', 'newwindow', 'width=600, height=200'); return false;">Share</a>
@@ -98,21 +126,14 @@ $('#panel-66082').on('shown.bs.collapse', function (e) {
 							<a href="./ajaxFunctions/logout.php">Logout</a>
 						</li>
 						<li class="dropdown">
-							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Options<strong class="caret"></strong></a>
+							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Search<strong class="caret"></strong></a>
 							<ul class="dropdown-menu">
 								<li>
-									<a href="#">Settings</a>
+									<input type="text" placeholder="Enter Address..." class="form-control" data-stopPropagation="true">
 								</li>
+                                <li class="divider"></li>
 								<li>
-									<a href="#">Another action</a>
-								</li>
-								<li>
-									<a href="#">Something else here</a>
-								</li>
-								<li class="divider">
-								</li>
-								<li>
-									<a>Seperated Link</a>
+									<button type="button" class="btn btn-sm" id="update" onclick="doSomething();" data-stopPropagation="true">Search</button>
 								</li>
 							</ul>
 						</li>
@@ -131,7 +152,7 @@ $('#panel-66082').on('shown.bs.collapse', function (e) {
 	<span class="label label-default">Markers</span>
 	<div class="row clearfix" id="rowmap">
 		<div class="col-md-3 column">
-			<div class="inner_marker">
+			<div class="inner_marker" id="inner">
 
 				<div class="panel-group" id="panel-66082">
 				
@@ -237,6 +258,16 @@ END;
 		</div>
 		<div class="col-md-9 column">
 			 <span class="label label-default">Map</span> 
+                <div class="messagepop pop">
+                    <div class="page-header"> <h2>Instructions</h2><br> </div>
+                    <p>Left-click (or just tap the screen) anywhere on the map to place a marker!</p>
+                    <p>To zoom in, scroll the mouse wheel! (Mobile users, use pinch zoom)!</p>
+                    <p>Wish to delete a pin? Just tap the X!</p>
+                    <p>Click on the marker on the left side to view that marker, it will automatically move you to that marker!</p>
+                    <p>While you click on the marker, you can update your pin by a press of the button!</p>
+                    <p>Wish to close this menu? Click the X or just click Help again!</p>
+                    <a class="close" href="/"><span class="glyphicon glyphicon-remove"></span></a>
+                </div>
 				<div id="map-canvas" class="circle-text"></div>
 		</div>
 
