@@ -48,25 +48,24 @@
     <script src="js/share.js" ></script>
     
     <script>
-        $('#panel-66082').on('shown.bs.collapse', function (e) {
-
-          // Validate this panel belongs to this accordian, and not an embedded one
-          var actualAccordianId = $('a[href="#' + $(e.target).attr('id') + '"').data('parent');
-          var targetAccordianId = '#' + $(this).attr('id');
-          if (actualAccordianId !== targetAccordianId) return;
-
-          var clickedHeader = $(this).find('.panel > .collapse.in').closest('.panel').find('.panel-heading');
-          var offset = clickedHeader.offset();
-          var top = $(window).scrollTop();
-          if(offset) {
-            var topOfHeader = offset.top;
-            if(topOfHeader < top) {
-              $('html,body').animate({ scrollTop: topOfHeader}, 100, 'swing');
+         //Still needs work. Does scroll but needs heavy mod
+       /* $(function () {
+        $('.panel-group').on('shown.bs.collapse', function (e) {
+            var offset = $('.panel.panel-default > .panel-collapse.in').offset();
+            if(offset) {
+                $('#inner').animate({
+                    scrollTop: $('.panel-collapse.in').siblings('.panel-heading').offset().top
+                }, 500); 
             }
-          }
         });
+        });*/
     
         //Help function for simple popup!
+        function deselect(e) {
+          $('.pop').slideFadeToggle(function() {
+            e.removeClass('selected');
+          });    
+        }
         $(function() {
           $('#help').on('click', function() {
             if($(this).hasClass('selected')) {

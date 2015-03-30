@@ -59,40 +59,41 @@
         });
         });*/
 
+
+
+        //Help function for simple popup!
         function deselect(e) {
-  $('.pop').slideFadeToggle(function() {
-    e.removeClass('selected');
-  });    
-}
+          $('.pop').slideFadeToggle(function() {
+            e.removeClass('selected');
+          });    
+        }
+        $(function() {
+          $('#help').on('click', function() {
+            if($(this).hasClass('selected')) {
+              deselect($(this));               
+            } else {
+              $(this).addClass('selected');
+              $('.pop').slideFadeToggle();
+            }
+            return false;
+          });
 
-//Help function for simple popup!
-$(function() {
-  $('#help').on('click', function() {
-    if($(this).hasClass('selected')) {
-      deselect($(this));               
-    } else {
-      $(this).addClass('selected');
-      $('.pop').slideFadeToggle();
-    }
-    return false;
-  });
+          $('.close').on('click', function() {
+            deselect($('#help'));
+            return false;
+          });
+        });
 
-  $('.close').on('click', function() {
-    deselect($('#help'));
-    return false;
-  });
-});
+        $.fn.slideFadeToggle = function(easing, callback) {
+          return this.animate({ opacity: 'toggle', height: 'toggle' }, 'fast', easing, callback);
+        };
 
-$.fn.slideFadeToggle = function(easing, callback) {
-  return this.animate({ opacity: 'toggle', height: 'toggle' }, 'fast', easing, callback);
-};
-    
-//For dropdown menu
-$(function() {
-    $("ul.dropdown-menu").on("click", "[data-stopPropagation]", function(e) {
-        e.stopPropagation();
-    });
-});
+        //For dropdown menu
+        $(function() {
+            $("ul.dropdown-menu").on("click", "[data-stopPropagation]", function(e) {
+                e.stopPropagation();
+            });
+        });
     </script>
 </head>
 
