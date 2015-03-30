@@ -48,18 +48,17 @@
     
     <script>
         //Still needs work. Does scroll but needs heavy mod
-       /* $(function () {
+        /*$(function () {
         $('.panel-group').on('shown.bs.collapse', function (e) {
             var offset = $('.panel.panel-default > .panel-collapse.in').offset();
             if(offset) {
-                $('#inner').animate({
+                $('.panel-group').animate({
                     scrollTop: $('.panel-collapse.in').siblings('.panel-heading').offset().top
-                }, 500); 
+                }, 650); 
             }
         });
         });*/
-
-
+      
 
         //Help function for simple popup!
         function deselect(e) {
@@ -150,11 +149,11 @@
 			</div>
 		</div>
 	</div>
+    <button type="button" class="btn btn-primary btn-med" onclick="centerOnMe()">Create Pin At My Position</button><br>
 	<span class="label label-default">Markers</span>
 	<div class="row clearfix" id="rowmap">
 		<div class="col-md-3 column">
 			<div class="inner_marker" id="inner">
-
 				<div class="panel-group" id="panel-66082">
 				
 				<?php
@@ -230,7 +229,7 @@ END;
 					
 				</div>
 			</div>
-			<button type="button" class="btn btn-primary btn-med" onclick="centerOnMe()">Create Pin At My Position</button>
+			
 			<!-- This is the code for the New Pin Form -->
 			<div id="newPinForm" class="hidden">
 				<form action="#" id="form" method="post" name="form" onsubmit="return false">
