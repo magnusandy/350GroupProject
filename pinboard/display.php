@@ -48,16 +48,16 @@
     
     <script>
         //Still needs work. Does scroll but needs heavy mod
-        /*$(function () {
+        $(function () {
         $('.panel-group').on('shown.bs.collapse', function (e) {
             var offset = $('.panel.panel-default > .panel-collapse.in').offset();
             if(offset) {
-                $('.panel-group').animate({
+                $('#inner').animate({
                     scrollTop: $('.panel-collapse.in').siblings('.panel-heading').offset().top
                 }, 650); 
             }
         });
-        });*/
+        });
       
 
         //Help function for simple popup!
@@ -125,18 +125,12 @@
 						<li>
 							<a href="./ajaxFunctions/logout.php">Logout</a>
 						</li>
-						<li class="dropdown">
-							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Search<strong class="caret"></strong></a>
-							<ul class="dropdown-menu">
-								<li>
-									<input type="text" placeholder="Enter Address..." class="form-control" data-stopPropagation="true">
-								</li>
-                                <li class="divider"></li>
-								<li>
-									<button type="button" class="btn btn-sm" id="update" onclick="doSomething();" data-stopPropagation="true">Search</button>
-								</li>
-							</ul>
-						</li>
+                       <!-- <li>
+                            <input type="text" placeholder="Enter Address..." class="form-control input-sm">
+                        </li>
+                        <li>
+                            <button type="button" class="btn btn-sm" id="update" onclick="doSomething();" class="form-control input-sm">Search</button>
+                        </li> -->
 					</ul>
 				</div>
 				
@@ -146,6 +140,7 @@
 				<h1>
 					Pinboard <small>Maps for the travelling soul!</small>
 				</h1>
+                
 			</div>
 		</div>
 	</div>
@@ -257,6 +252,8 @@ END;
 			</div>
 		</div>
 		<div class="col-md-9 column">
+            <input type="text" placeholder="Enter Address..." class="form-control input-sm">
+            <button type="button" class="btn btn-sm" id="update" onclick="doSomething();" class="form-control input-sm">Search</button><br>
 			 <span class="label label-default">Map</span> 
                 <div class="messagepop pop">
                     <div class="page-header"> <h2>Instructions</h2><br> </div>
