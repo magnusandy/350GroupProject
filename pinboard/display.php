@@ -144,7 +144,9 @@
 			</div>
 		</div>
 	</div>
-    <button type="button" class="btn btn-primary btn-med" onclick="centerOnMe()">Create Pin At My Position</button><br>
+	<input type="text" placeholder="Enter Address..." class="input-lg"><br>
+            <button type="button" class="btn btn-med btn-primary" id="update" onclick="doSomething();">Search</button>
+    <button type="button" class="btn btn-med" onclick="centerOnMe()">Create Pin At My Position</button><br>
 	<span class="label label-default">Markers</span>
 	<div class="row clearfix" id="rowmap">
 		<div class="col-md-3 column">
@@ -252,8 +254,6 @@ END;
 			</div>
 		</div>
 		<div class="col-md-9 column">
-            <input type="text" placeholder="Enter Address..." class="form-control input-sm">
-            <button type="button" class="btn btn-sm" id="update" onclick="doSomething();" class="form-control input-sm">Search</button><br>
 			 <span class="label label-default">Map</span> 
                 <div class="messagepop pop">
                     <div class="page-header"> <h2>Instructions</h2><br> </div>
