@@ -132,8 +132,8 @@
 		</div>
 	</div>
         <input type="text" placeholder="Enter Address..." class="input-lg"><br>
-    <button type="button" class="btn btn-med btn-primary" id="update" onclick="doSomething();">Search</button>
-    <button type="button" class="btn btn-med" onclick="centerOnMe()">Create Pin At My Position</button><br>
+    <button type="button" class="btn btn-med btn-primary" id="search" title="Search!" onclick="doSomething();"><span class="glyphicon glyphicon-search"></span></button>
+    <button type="button" class="btn btn-med" onclick="centerOnMe()" title="Place marker at current destination!"><span class="glyphicon glyphicon-pushpin"></button><br>
 	<span class="label label-default">Markers</span>
 	<div class="row clearfix" id="rowmap">
 		<div class="col-md-3 column">

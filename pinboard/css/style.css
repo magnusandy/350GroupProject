@@ -17,7 +17,7 @@ body,
 
 body{
     background-image: url(worldmapBlur.jpg);
-    background-size: auto 200%;
+    background-size: cover 100%;
     background-repeat: no-repeat;
 }
 
