@@ -110,9 +110,13 @@
 						<li>
 							<a href="/help" id="help">Help</a>
 						</li>
-                        <li>
-                            <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $encodeurl; ?>" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=<?php echo $encodeurl; ?>', 'newwindow', 'width=600, height=200'); return false;" id="share">Share on Facebook!</a>
+                        <li  id="facebookShare">
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $encodeurl; ?>" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=<?php echo $encodeurl; ?>', 'newwindow', 'width=600, height=200'); return false;" id="share" style="background-color: #3b5998; color: white;">Share on Facebook</a>
                         </li>
+			   <li  id="googleShare">
+				<a href="https://plus.google.com/share?url=<?php echo $encodeurl; ?>" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" style="background-color: #dd4b39; color: white;">Share on Google+</a>
+                        </li>
+
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li>
@@ -131,12 +135,12 @@
 			</div>
 		</div>
 	</div>
+	<div class="row clearfix" id="rowmap">
+		<div class="col-md-3 column">
         <input type="text" placeholder="Enter Address..." class="input-lg"><br>
     <button type="button" class="btn btn-med btn-primary" id="search" title="Search!" onclick="doSomething();"><span class="glyphicon glyphicon-search"></span></button>
     <button type="button" class="btn btn-med" onclick="centerOnMe()" title="Place marker at current destination!"><span class="glyphicon glyphicon-pushpin"></button><br>
-	<span class="label label-default">Markers</span>
-	<div class="row clearfix" id="rowmap">
-		<div class="col-md-3 column">
+<span class="label label-default">Markers</span>
 			<div class="inner_marker" id="inner">
 				<div class="panel-group" id="panel-66082">
 				
