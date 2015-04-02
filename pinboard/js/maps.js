@@ -18,6 +18,11 @@ var allMarkers;
 var MASTERinfoWindow = new google.maps.InfoWindow();
 var tempMarker = new google.maps.Marker();
 
+function excapeChars(parse)
+{
+	var x = parse.replace("'", "''")
+	return x
+}
 
 function initialize()
 {
@@ -58,8 +63,11 @@ function showPinForm(){
 	
 function submitPin(){
 	name = document.getElementById("pinName").value;
+	name = excapeChars(name);
 	address = document.getElementById("pinAddress").value;
+	address = excapeChars(address);
 	description = document.getElementById("pinDescription").value;
+	description = excapeChars(description);
 	isVisited = document.getElementById("pinIsVisited");
 	if(isVisited.checked)
 	{
