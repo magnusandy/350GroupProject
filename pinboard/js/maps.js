@@ -260,3 +260,56 @@ function centerOnMe()
     });
 }
 google.maps.event.addDomListener(window, 'load', initialize);
+
+
+/*JOE, HERE IS THE CODE FROM CODING AN ADDRESS FROM ASSIGNMENT 1. 
+PLEASE TAKE A LOOK AT IT, IT MAY HELP WITH DESIGINING OUR SEARCH FUNCTION.*/
+/*
+//Task CMPT350
+function codeAddress() 
+{
+	
+	startMarker.setMap(null);
+	endMarker.setMap(null);
+	calcGivenRoute(document.getElementById("inputTextAddressStart").value, document.getElementById("inputTextAddressEnd").value);
+	sAddress = document.getElementById("inputTextAddressStart").value;
+	geocoder.geocode( { 'address': sAddress}, function(results, status) {		
+	if(status == google.maps.GeocoderStatus.OK)
+		{
+			map.setCenter(results[0].geometry.location);
+			startMarker = new google.maps.Marker
+			({
+				map: map,
+				position: results[0].geometry.location,
+				title: 'This is your starting destination!'
+			});
+            startCoord = results[0].geometry.location;
+		}
+	else
+	{
+		alert("Geocode was unsuccessful at finding your location." + status);
+	}
+		
+	});
+		endAddress = document.getElementById("inputTextAddressEnd").value;
+		geocoder.geocode( { 'address': endAddress}, function(results, status) {		
+	if(status == google.maps.GeocoderStatus.OK)
+		{
+			map.setCenter(results[0].geometry.location);
+			endMarker = new google.maps.Marker
+			({
+				map: map,
+				position: results[0].geometry.location,
+				title: 'This is your end destination!'
+			});
+            endCoord = results[0].geometry.location;
+		}
+	else
+	{
+		alert("Geocode was unsuccessful at finding your location." + status);
+	}
+		
+	});
+}
+
+*/
