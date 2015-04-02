@@ -209,7 +209,7 @@
 								<strong>Address:</strong> $row[address] <br>
 								<strong>Description: </strong> $row[description]<br>
 								<strong>Status: </strong> $visited<br>
-                                <button type="button" class="btn btn-sm" id="update" onclick ="showUpdateForm($row[id], $row[title], $row[description], $row[isVisited]);">Update</button>
+                                <button type="button" class="btn btn-sm" id="update" onclick ="showUpdateForm($row[id], '$row[title]', '$row[description]', $row[isVisited]);">Update</button>
                                 <br>
 							</div>
 						</div>

@@ -20,7 +20,8 @@ var tempMarker = new google.maps.Marker();
 
 function excapeChars(parse)
 {
-	var x = parse.replace("'", "''")
+	var x = parse.replace(/'/g, "")
+	var x = x.replace(/"/g, '')
 	return x
 }
 
@@ -146,13 +147,14 @@ function updatePin() {
    var xmlhttp = new XMLHttpRequest();
    xmlhttp.onreadystatechange = function() {
       if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-			//DO WHATEVER YOU WANT TO DO WHEN UPDATE IS COMPLETE
+			window.location = "display.php";
       }
    }
-	//NEED TO PUT IN THE CORRECT ID HERE!!
 	id = document.getElementById("updatePinID").value;
 	title = document.getElementById("updatePinName").value;
+	title = excapeChars(title);
 	description = document.getElementById("updatePinDescription").value;
+	description = excapeChars(description);
 	isVisited = document.getElementById("updatePinIsVisited");
 	if(isVisited.checked)
 	{
