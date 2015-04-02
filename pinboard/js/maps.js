@@ -200,10 +200,10 @@ function placeMarker(pinLat,pinLng,pinName,isVisited, description, address){
 	
 	//create an info window
 	var contentString = '<link href="css/bootstrap.min.css" rel="stylesheet">' +
-	'<link href="css/style.css" rel="stylesheet">' + '<div class="panel panel-info">' +
-	'<div class="panel-heading"><h3 id="firstHeading" class="firstHeading">'+pinName+'</h1></div>'+
-	'<div class="panel-body"><p><b>Address: </b>'+address+'</p><br>'+
-	'<p><b>Description: </b>'+description+'</p><br></div>'+
+	'<link href="css/style.css" rel="stylesheet">' + '<div id="content" >' +
+	'<h3 id="firstHeading" class="firstHeading"><span class="label label-info">'+pinName+'</span></h3>'+
+	'<p><b><span class="label label-default">Address:</span></b> '+address+'</p><br>'+
+	'<p><b><span class="label label-default">Description:</span></b> '+description+'</p><br>'+
 	'</div>';
 	var infowindow = new google.maps.InfoWindow({
     content: contentString
