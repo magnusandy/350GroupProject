@@ -48,7 +48,7 @@
     
     <script>
         //Still needs work. Does scroll but needs heavy mod
-        $(function () {
+ /*       $(function () {
         $('.panel-group').on('shown.bs.collapse', function (e) {
             var offset = $('.panel.panel-default > .panel-collapse.in').offset();
             if(offset) {
@@ -57,7 +57,7 @@
                 }, 650); 
             }
         });
-        });
+        });*/
       
 
         //Help function for simple popup!
@@ -86,20 +86,13 @@
         $.fn.slideFadeToggle = function(easing, callback) {
           return this.animate({ opacity: 'toggle', height: 'toggle' }, 'fast', easing, callback);
         };
-
-        //For dropdown menu
-        $(function() {
-            $("ul.dropdown-menu").on("click", "[data-stopPropagation]", function(e) {
-                e.stopPropagation();
-            });
-        });
     </script>
+    <meta name="viewport" content="width=device-width, user-scalable=yes">
 </head>
 
 
 <body>
-    <!-- Will move this after, just testing to get sharing page to facebook.-->
-    
+
 <div class="container">
 	<div class="row clearfix">
 		<div class="col-md-12 column">
@@ -118,19 +111,13 @@
 							<a href="/help" id="help">Help</a>
 						</li>
                         <li>
-                            <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $encodeurl; ?>" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=<?php echo $encodeurl; ?>', 'newwindow', 'width=600, height=200'); return false;">Share</a>
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $encodeurl; ?>" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=<?php echo $encodeurl; ?>', 'newwindow', 'width=600, height=200'); return false;" id="share">Share on Facebook!</a>
                         </li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li>
 							<a href="./ajaxFunctions/logout.php">Logout</a>
 						</li>
-                       <!-- <li>
-                            <input type="text" placeholder="Enter Address..." class="form-control input-sm">
-                        </li>
-                        <li>
-                            <button type="button" class="btn btn-sm" id="update" onclick="doSomething();" class="form-control input-sm">Search</button>
-                        </li> -->
 					</ul>
 				</div>
 				
@@ -144,8 +131,8 @@
 			</div>
 		</div>
 	</div>
-	<input type="text" placeholder="Enter Address..." class="input-lg"><br>
-            <button type="button" class="btn btn-med btn-primary" id="update" onclick="doSomething();">Search</button>
+        <input type="text" placeholder="Enter Address..." class="input-lg"><br>
+    <button type="button" class="btn btn-med btn-primary" id="update" onclick="doSomething();">Search</button>
     <button type="button" class="btn btn-med" onclick="centerOnMe()">Create Pin At My Position</button><br>
 	<span class="label label-default">Markers</span>
 	<div class="row clearfix" id="rowmap">
