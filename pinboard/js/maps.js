@@ -21,7 +21,10 @@ var tempMarker = new google.maps.Marker();
 function excapeChars(parse)
 {
 	var x = parse.replace(/'/g, "")
-	var x = x.replace(/"/g, '')
+	x = x.replace(/"/g, '')
+	x = x.replace(/\n/g, '')
+	x = x.replace(/\\/g, '')
+	x = x.replace(/\//g, '')
 	return x
 }
 
