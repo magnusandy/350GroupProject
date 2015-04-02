@@ -244,12 +244,14 @@ END;
 			 <span class="label label-default">Map</span> 
                 <div class="messagepop pop">
                     <div class="page-header"> <h2>Instructions</h2><br> </div>
-                    <p>Left-click (or just tap the screen) anywhere on the map to place a marker!</p>
-                    <p>To zoom in, scroll the mouse wheel! (Mobile users, use pinch zoom)!</p>
-                    <p>Wish to delete a pin? Just tap the X!</p>
-                    <p>Click on the marker on the left side to view that marker, it will automatically move you to that marker!</p>
+                    <p><b>Left-click</b> (or just tap the screen) anywhere on the map to place a marker!</p>
+                    <p><b>To zoom in</b> scroll the mouse wheel! (Mobile users, use pinch zoom)!</p>
+                    <p><b>Wish to delete</b> a pin? Just tap the X!</p>
+                    <p><b>Click on the marker</b> on the left side to view that marker, it will automatically move you to that marker!</p>
                     <p>While you click on the marker, you can update your pin by a press of the button!</p>
                     <p>Wish to close this menu? Click the X or just click Help again!</p>
+                    <p>Want to <b>search?</b> use the menu above the markers and click the magnifying glass!</p>
+                    <p>To <b>create pin at current location</b> simply click the pin button!</p>
                     <a class="close" href="/"><span class="glyphicon glyphicon-remove"></span></a>
                 </div>
 				<div id="map-canvas" class="circle-text"></div>
