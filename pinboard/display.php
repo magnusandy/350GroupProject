@@ -248,8 +248,8 @@ END;
                     <p><b>To zoom in</b> scroll the mouse wheel! (Mobile users, use pinch zoom)!</p>
                     <p><b>Wish to delete</b> a pin? Just tap the X!</p>
                     <p><b>Click on the marker</b> on the left side to view that marker, it will automatically move you to that marker!</p>
-                    <p>While you click on the marker, you can update your pin by a press of the button!</p>
-                    <p>Wish to close this menu? Click the X or just click Help again!</p>
+                    <p>While you click on the marker, you can <b>update</b> your pin by a press of the button!</p>
+                    <p>Wish to <b>close this menu?</b> Click the <b>X</b> or just click Help again!</p>
                     <p>Want to <b>search?</b> use the menu above the markers and click the magnifying glass!</p>
                     <p>To <b>create pin at current location</b> simply click the pin button!</p>
                     <a class="close" href="/"><span class="glyphicon glyphicon-remove"></span></a>
