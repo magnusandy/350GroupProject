@@ -109,10 +109,15 @@
 						</li>
 						<li>
 							<a href="/help" id="help">Help</a>
-						</li>
-                        <li>
-                            <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $encodeurl; ?>" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=<?php echo $encodeurl; ?>', 'newwindow', 'width=600, height=200'); return false;">Share</a>
+						</li>	
+			 <li  id="facebookShare">
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $encodeurl; ?>" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=<?php echo $encodeurl; ?>', 'newwindow', 'width=600, height=200'); return false;" id="share" style="background-color: #3b5998; color: white;">Share on Facebook</a>
                         </li>
+			   <li  id="googleShare">
+				<a href="https://plus.google.com/share?url=<?php echo $encodeurl; ?>" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" style="background-color: #dd4b39; color: white;">Share on Google+</a>
+                        </li>
+	
+	
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li>
