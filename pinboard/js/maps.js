@@ -177,7 +177,8 @@ function updatePin() {
 	{
 		isVisited = false;
 	}
-	if(name != ""){
+	alert(isVisited);
+	if(title != ""){
 		var postParams = "id="+id+"&title="+title+"&description="+description+"&isVisited="+isVisited;
 		xmlhttp.open("POST", "ajaxFunctions/updatePin.php", true);
 		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
@@ -281,6 +282,7 @@ function geoCodeAddress()
 			map.setCenter(results[0].geometry.location);
 			// Set the new pin to be from a searched address
 			fromClick = false;
+			tempPlaceMarker(results[0].geometry.location);
 			showPinForm();
 			document.getElementById("pinAddress").className = "hidden";
 			document.getElementById("pinAddress").value = sAddress;
