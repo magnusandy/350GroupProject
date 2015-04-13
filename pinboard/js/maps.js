@@ -10,10 +10,12 @@ var curMarker = new google.maps.Marker;
 var id;
 var name;
 var address;
+var newLatLng;
 var description;
 var isVisited;
 var clickEvent;
 var currentOnClick;
+var fromClick = true;
 var allMarkers;
 var MASTERinfoWindow = new google.maps.InfoWindow();
 var tempMarker = new google.maps.Marker();
@@ -48,6 +50,9 @@ function initialize()
 	map.setCenter(new google.maps.LatLng(25,10));
 	google.maps.event.addListener(map, 'click', function(event){
 		showPinForm();
+		document.getElementById("pinAddress").placeholder = "Pin Address (Optional)";
+		document.getElementById("pinAddress").value = "";
+		document.getElementById("pinAddress").className = "form-control";
 		//clickEvent = event;
 		currentOnClick = event.latLng;
         tempPlaceMarker(event.latLng);
@@ -82,7 +87,12 @@ function submitPin(){
 		isVisited = false;
 	}
 	if(name != ""){
-		createPin(name,address,currentOnClick.lat(),currentOnClick.lng(),description,isVisited);
+		// Checks if the new pin is coming from a clickEvent or Address search to grab to proper latLng
+		if(fromClick == true){
+			createPin(name,address,currentOnClick.lat(),currentOnClick.lng(),description,isVisited);
+		} else {
+			createPin(name,address,newLatLng.lat(),newLatLng.lng(),description,isVisited);
+		}
 	} else {
 		var pinError = document.getElementById("pinNameError");
 		pinError.className = "";
@@ -261,55 +271,22 @@ function centerOnMe()
 }
 google.maps.event.addDomListener(window, 'load', initialize);
 
-
-/*JOE, HERE IS THE CODE FROM CODING AN ADDRESS FROM ASSIGNMENT 1. 
-PLEASE TAKE A LOOK AT IT, IT MAY HELP WITH DESIGINING OUR SEARCH FUNCTION.*/
-/*
-//Task CMPT350
-function codeAddress() 
+// Geocodes a given address and sets up a form for a new pin at said address
+function geoCodeAddress() 
 {
-	
-	startMarker.setMap(null);
-	endMarker.setMap(null);
-	calcGivenRoute(document.getElementById("inputTextAddressStart").value, document.getElementById("inputTextAddressEnd").value);
-	sAddress = document.getElementById("inputTextAddressStart").value;
+	geocoder = new google.maps.Geocoder();
+	sAddress = document.getElementById("geoCodeAddressField").value;
 	geocoder.geocode( { 'address': sAddress}, function(results, status) {		
-	if(status == google.maps.GeocoderStatus.OK)
-		{
+		if(status == google.maps.GeocoderStatus.OK){
 			map.setCenter(results[0].geometry.location);
-			startMarker = new google.maps.Marker
-			({
-				map: map,
-				position: results[0].geometry.location,
-				title: 'This is your starting destination!'
-			});
-            startCoord = results[0].geometry.location;
+			// Set the new pin to be from a searched address
+			fromClick = false;
+			showPinForm();
+			document.getElementById("pinAddress").className = "hidden";
+			document.getElementById("pinAddress").value = sAddress;
+			newLatLng = results[0].geometry.location;
+		} else {
+			alert("Geocode was unsuccessful at finding given location." + status);
 		}
-	else
-	{
-		alert("Geocode was unsuccessful at finding your location." + status);
-	}
-		
-	});
-		endAddress = document.getElementById("inputTextAddressEnd").value;
-		geocoder.geocode( { 'address': endAddress}, function(results, status) {		
-	if(status == google.maps.GeocoderStatus.OK)
-		{
-			map.setCenter(results[0].geometry.location);
-			endMarker = new google.maps.Marker
-			({
-				map: map,
-				position: results[0].geometry.location,
-				title: 'This is your end destination!'
-			});
-            endCoord = results[0].geometry.location;
-		}
-	else
-	{
-		alert("Geocode was unsuccessful at finding your location." + status);
-	}
-		
 	});
 }
-
-*/

@@ -137,8 +137,8 @@
 	</div>
 	<div class="row clearfix" id="rowmap">
 		<div class="col-md-3 column">
-        <input type="text" placeholder="Enter Address..." class="input-lg"><br>
-    <button type="button" class="btn btn-med btn-primary" id="search" title="Search!" onclick="doSomething();"><span class="glyphicon glyphicon-search"></span></button>
+        <input type="text" id="geoCodeAddressField" placeholder="Enter Address..." class="input-lg"><br>
+    <button type="button" class="btn btn-med btn-primary" id="search" title="Search!" onclick="geoCodeAddress();"><span class="glyphicon glyphicon-search"></span></button>
     <button type="button" class="btn btn-med" onclick="centerOnMe()" title="Place marker at current destination!"><span class="glyphicon glyphicon-pushpin"></button><br>
 <span class="label label-default">Markers</span>
 			<div class="inner_marker" id="inner">
@@ -240,6 +240,7 @@ END;
 				<textarea id="updatePinDescription" name="updatePinDescription" placeholder="Enter A New Description For This Pin" style="resize:none;" class="form-control"></textarea><br>
 				<input type="checkbox" id="updatePinIsVisited" name="updateVisitedCheck" value="true"> Have you visited here yet?<br><br/>
 				<input id="updatePinID" name="updatePinID" placeholder="" type="text" class="hidden">
+				<input id="updatePinAddress" name="updatePinAddress" type="test" class="hidden">
 				</form>
                 <button type="submit" class="btn btn-primary btn-med" id="submit" onclick ="updatePin();">Update</button>
 			</div>
