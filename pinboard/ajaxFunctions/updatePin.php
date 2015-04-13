@@ -14,7 +14,7 @@ $password = "qwertyhero";
 $id =(int)$_POST["id"];
 $title = $_POST["title"];
 $desc = $_POST["description"];
-$isVisited = (boolean)$_POST["isVisited"];
+$isVisited = $_POST["isVisited"];
 
 
 //create connection to the database
