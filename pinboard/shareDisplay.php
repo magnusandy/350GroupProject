@@ -106,9 +106,6 @@
 					<ul class="nav navbar-nav">
 						<li class="active">
 							<a href="./display.php">Home</a>
-						</li>
-						<li>
-							<a href="/help" id="help">Help</a>
 						</li>	
 			 <li  id="facebookShare">
                             <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $encodeurl; ?>" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=<?php echo $encodeurl; ?>', 'newwindow', 'width=600, height=200'); return false;" id="share" style="background-color: #3b5998; color: white;">Share on Facebook</a>
@@ -122,9 +119,6 @@
 					<ul class="nav navbar-nav navbar-right">
 						<li>
 							<a href="./index.html">Login</a>
-						</li>
-						<li class="dropdown">
-							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Options<strong class="caret"></strong></a>
 						</li>
 					</ul>
 				</div>
