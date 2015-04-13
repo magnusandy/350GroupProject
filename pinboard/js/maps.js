@@ -79,8 +79,10 @@ function enterPressAddressBox(e)
 */	
 function showPinForm(){
 	var updatePinForm = document.getElementById("updatePinForm");
+	document.getElementById("pinAddress").readOnly = false;
 	if(updatePinForm.className != "hidden"){
 		updatePinForm.className = "hidden";
+		
 	}
 	var pinForm = document.getElementById("newPinForm");
 	if(pinForm.className == "hidden"){
@@ -190,7 +192,6 @@ function updatePin() {
 	description = document.getElementById("updatePinDescription").value;
 	description = excapeChars(description);
 	isVisited = document.getElementById("updatePinIsVisited");
-	alert(isVisited.checked);
 	if(isVisited.checked)
 	{
 		isVisited = true;
@@ -306,7 +307,7 @@ function geoCodeAddress()
 			fromClick = false;
 			tempPlaceMarker(results[0].geometry.location);
 			showPinForm();
-			document.getElementById("pinAddress").className = "hidden";
+			document.getElementById("pinAddress").readOnly = true;
 			document.getElementById("pinAddress").value = sAddress;
 			newLatLng = results[0].geometry.location;
 		} else {
