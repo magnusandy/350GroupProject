@@ -20,6 +20,9 @@ var allMarkers;
 var MASTERinfoWindow = new google.maps.InfoWindow();
 var tempMarker = new google.maps.Marker();
 
+/**
+* removes some the nastier or inconvenient characters from the strings going into the database
+*/
 function excapeChars(parse)
 {
 	var x = parse.replace(/'/g, "")
@@ -29,7 +32,9 @@ function excapeChars(parse)
 	x = x.replace(/\//g, '')
 	return x
 }
-
+/**
+* this function is run when the page loads, it loads the map, as well as all the pins onto the map 
+*/
 function initialize()
 {
 	geocoder = new google.maps.Geocoder();
@@ -58,7 +63,10 @@ function initialize()
         tempPlaceMarker(event.latLng);
 	});
 }
-	
+
+/**
+* sets the forms to be visible
+*/	
 function showPinForm(){
 	var updatePinForm = document.getElementById("updatePinForm");
 	if(updatePinForm.className != "hidden"){
@@ -69,7 +77,10 @@ function showPinForm(){
 		pinForm.className = "";
 	}
 }
-	
+
+/**
+* Submits a new pin to the database from the values in the new pin form
+*/
 function submitPin(){
 	name = document.getElementById("pinName").value;
 	name = excapeChars(name);
@@ -169,6 +180,7 @@ function updatePin() {
 	description = document.getElementById("updatePinDescription").value;
 	description = excapeChars(description);
 	isVisited = document.getElementById("updatePinIsVisited");
+	alert(isVisited.checked);
 	if(isVisited.checked)
 	{
 		isVisited = true;
@@ -177,7 +189,6 @@ function updatePin() {
 	{
 		isVisited = false;
 	}
-	alert(isVisited);
 	if(title != ""){
 		var postParams = "id="+id+"&title="+title+"&description="+description+"&isVisited="+isVisited;
 		xmlhttp.open("POST", "ajaxFunctions/updatePin.php", true);
@@ -270,7 +281,7 @@ function centerOnMe()
       alert("failed")
     });
 }
-google.maps.event.addDomListener(window, 'load', initialize);
+
 
 // Geocodes a given address and sets up a form for a new pin at said address
 function geoCodeAddress() 
@@ -292,3 +303,5 @@ function geoCodeAddress()
 		}
 	});
 }
+
+google.maps.event.addDomListener(window, 'load', initialize);
