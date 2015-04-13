@@ -137,7 +137,7 @@
 	</div>
 	<div class="row clearfix" id="rowmap">
 		<div class="col-md-3 column">
-        <input type="text" id="geoCodeAddressField" placeholder="Enter Address..." class="input-lg"><br>
+        <input type="text" id="geoCodeAddressField" placeholder="Enter Address..." class="input-lg" onkeypress="enterPressAddressBox(event)"><br>
     <button type="button" class="btn btn-med btn-primary" id="search" title="Search!" onclick="geoCodeAddress();"><span class="glyphicon glyphicon-search"></span></button>
     <button type="button" class="btn btn-med" onclick="centerOnMe()" title="Place marker at current destination!"><span class="glyphicon glyphicon-pushpin"></button><br>
 <span class="label label-default">Markers</span>

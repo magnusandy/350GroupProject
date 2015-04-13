@@ -65,6 +65,16 @@ function initialize()
 }
 
 /**
+*Simple function that submits the address searchbox when enter is pressed
+*/
+function enterPressAddressBox(e)
+{
+	if(e.keyCode == 13)
+	{
+		geoCodeAddress();
+	}
+}
+/**
 * sets the forms to be visible
 */	
 function showPinForm(){
@@ -291,6 +301,7 @@ function geoCodeAddress()
 	geocoder.geocode( { 'address': sAddress}, function(results, status) {		
 		if(status == google.maps.GeocoderStatus.OK){
 			map.setCenter(results[0].geometry.location);
+			map.setZoom(7);
 			// Set the new pin to be from a searched address
 			fromClick = false;
 			tempPlaceMarker(results[0].geometry.location);
