@@ -5,7 +5,7 @@ Group Members
  - Evan Closson
  - Joseph Gates
 
- Live Site: http://www.evanclosson.space/pinboard
+ Live Site: https://evanclosson.me/pinboard/
  Github: https://github.com/magnusandy/350GroupProject
  
  requirements to run
